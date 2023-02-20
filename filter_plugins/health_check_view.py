@@ -17,63 +17,135 @@ DOCUMENTATION = """
 """
 
 EXAMPLES = r"""
+- name: health_check
+    vars:
+      checks:
+        - name: all_neighbors_up
+          ignore_errors: true
+        - name: all_neighbors_down
+          ignore_errors: true
+        - name: min_neighbors_up
+          min_count: 2
+        - name: ospf_status_summary
+
 - set_fact:
-   "health_facts":{
-   "down_peer_count":"",
-   "group_count":"",
-   "neighbors":[
-      {
-         "msg_rcvd":3839,
-         "msg_sent":3834,
-         "path":{
-            "memory_usage":168,
-            "total_entries":2
-         },
-         "peer":"12.0.0.1",
-         "peer_as":500,
-         "peer_state":"1",
-         "total_memory":776
-      },
-      {
-         "msg_rcvd":0,
-         "msg_sent":0,
-         "path":{
-            "memory_usage":168,
-            "total_entries":2
-         },
-         "peer":"23.0.0.1",
-         "peer_as":500,
-         "peer_state":"Idle",
-         "total_memory":776
-      }
-   ],
-   "peer_count":""
+   "ospf_health":{
+        "neighbors": [
+            {
+                "address": "11.0.13.3",
+                "dead_time": "00:00:38",
+                "interface": "GigabitEthernet0/1",
+                "neighbor_id": "3.3.3.3",
+                "peer_state": "FULL/BDR",
+                "priority": 1
+            },
+            {
+                "address": "10.0.12.2",
+                "dead_time": "00:00:33",
+                "interface": "GigabitEthernet0/0",
+                "neighbor_id": "2.2.2.2",
+                "peer_state": "FULL/BDR",
+                "priority": 1
+            }
+        ]
+    }
+
+- name: Set health checks fact
+  ansible.builtin.set_fact:
+     health_checks: "{{ ospf_health | health_check_view(item) }}"
+
+ok: [192.168.22.43] => {
+    "failed_when_result": false,
+    "health_checks": {
+        "all_neighbors_down": {
+            "check_status": "unsuccessful",
+            "details": {
+                "neighbors": []
+            },
+            "down": 0,
+            "total": 2,
+            "up": 2
+        },
+        "all_neighbors_up": {
+            "check_status": "successful",
+            "details": {
+                "neighbors": [
+                    {
+                        "address": "11.0.13.3",
+                        "dead_time": "00:00:38",
+                        "interface": "GigabitEthernet0/1",
+                        "neighbor_id": "3.3.3.3",
+                        "peer_state": "FULL/BDR",
+                        "priority": 1
+                    },
+                    {
+                        "address": "10.0.12.2",
+                        "dead_time": "00:00:33",
+                        "interface": "GigabitEthernet0/0",
+                        "neighbor_id": "2.2.2.2",
+                        "peer_state": "FULL/BDR",
+                        "priority": 1
+                    }
+                ]
+            },
+            "down": 0,
+            "total": 2,
+            "up": 2
+        },
+        "min_neighbors_up": {
+            "check_status": "successful",
+            "details": {
+                "neighbors": [
+                    {
+                        "address": "11.0.13.3",
+                        "dead_time": "00:00:38",
+                        "interface": "GigabitEthernet0/1",
+                        "neighbor_id": "3.3.3.3",
+                        "peer_state": "FULL/BDR",
+                        "priority": 1
+                    },
+                    {
+                        "address": "10.0.12.2",
+                        "dead_time": "00:00:33",
+                        "interface": "GigabitEthernet0/0",
+                        "neighbor_id": "2.2.2.2",
+                        "peer_state": "FULL/BDR",
+                        "priority": 1
+                    }
+                ]
+            },
+            "down": 0,
+            "total": 2,
+            "up": 2
+        },
+        "ospf_status_summary": {
+            "details": {
+                "neighbors": [
+                    {
+                        "address": "11.0.13.3",
+                        "dead_time": "00:00:38",
+                        "interface": "GigabitEthernet0/1",
+                        "neighbor_id": "3.3.3.3",
+                        "peer_state": "FULL/BDR",
+                        "priority": 1
+                    },
+                    {
+                        "address": "10.0.12.2",
+                        "dead_time": "00:00:33",
+                        "interface": "GigabitEthernet0/0",
+                        "neighbor_id": "2.2.2.2",
+                        "peer_state": "FULL/BDR",
+                        "priority": 1
+                    }
+                ]
+            },
+            "down": 0,
+            "total": 2,
+            "up": 2
+        },
+        "status": "successful"
+    }
 }
-
-- set_fact:
-    "action": {
-   "name":"health_check",
-   "vars":{
-      "checks":[
-         {
-            "name":"all_neighbors_up"
-         },
-         {
-            "name":"all_neighbors_down"
-         },
-         {
-            "min_count":1,
-            "name":"min_neighbors_up"
-         }
-      ]
-   }
-} 
-
-- name: Get final list of parameters
-  register: result
-  set_fact:
-    final_params: "{{ health_facts|health_check_view(action) }}"
-
 """
 
 RETURN = """
@@ -99,9 +171,6 @@ def health_check_view(*args, **kwargs):
         )
 
     health_facts = data["health_facts"]
-    import q
-    q(data)
-    q(health_facts)
     target = data["target"]
     health_checks = {}
     health_checks['status'] = 'successful'
@@ -131,7 +200,6 @@ def health_check_view(*args, **kwargs):
                     n_dict['details'] = details
                 health_checks[data['summary'].get('name')] = n_dict
 
-            # if is_present(checks, 'all_neighbors_up'):
             if data['all_up']:
                 n_dict = {}
                 n_dict.update(stats)
@@ -144,7 +212,6 @@ def health_check_view(*args, **kwargs):
                 health_checks[data['all_up'].get('name')] = n_dict
 
             if data['all_down']:
-            # if is_present(checks, 'all_neighbors_down'):
                 n_dict = {}
                 details = {}
                 n_dict.update(stats)
