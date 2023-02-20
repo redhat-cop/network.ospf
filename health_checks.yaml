@@ -12,7 +12,8 @@
               details: true
               checks:
                 - name: all_neighbors_up
-                # - name: all_neighbors_down
+                - name: all_neighbors_down
+                  ignore_erros: true
                 - name: min_neighbors_up
                   min_count: 2
 
