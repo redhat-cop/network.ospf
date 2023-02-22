@@ -127,6 +127,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       actions:
+        - name: remediate
       
 ### Code of Conduct
 This collection follows the Ansible project's
