@@ -97,6 +97,37 @@ health_checks.yml
       actions:
         - name: deploy
 ```
+
+#### Detect configuration drift in OSPF Configuration
+- Detect operation will read the facts from the provided/default inventory and detect if any configuration changes are there on the appliances using overridden state.
+
+```yaml
+- name: 
+  hosts: ios
+  gather_facts: false
+  tasks:
+  - name: OSPF Manager
+    include_role:
+      name: network.ospf.run
+    vars:
+      actions:
+        - name: detect
+```
+
+#### Remediate configuration drift in OSPF Configuration
+- Remediate operation will read the facts from the provided/default inventory and Remediate if any configuration changes are there on the appliances using overridden state.
+
+```yaml
+- name: 
+  hosts: ios
+  gather_facts: false
+  tasks:
+  - name: OSPF Manager
+    include_role:
+      name: network.ospf.run
+    vars:
+      actions:
+      
 ### Code of Conduct
 This collection follows the Ansible project's
 [Code of Conduct](https://docs.ansible.com/ansible/devel/community/code_of_conduct.html).

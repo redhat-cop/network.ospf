@@ -167,10 +167,16 @@ def health_check_view(*args, **kwargs):
     if len(data) < 2:
         raise AnsibleFilterError(
             "Missing either 'health facts' or 'other value in filter input,"
-            "refer 'ansible.utils.health_check_view' filter plugin documentation for details",
+            "refer 'health_check_view' filter plugin documentation for details",
         )
 
-    health_facts = data["health_facts"]
+    ospf_summary = data["health_facts"]
+    v4_health = ospf_summary.get("v4")
+    v6_health = ospf_summary.get("v6")
+    if v4_health:
+        health_facts = v4_health
+    else:
+        health_facts = v6_health
     target = data["target"]
     health_checks = {}
     health_checks['status'] = 'successful'
