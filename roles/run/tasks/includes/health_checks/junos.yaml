@@ -1,0 +1,14 @@
+---
+- name: Parse ospf summary
+  ansible.utils.cli_parse:
+    command: "show ospf neighbor"
+    parser:
+      name: ansible.netcommon.content_templates
+    set_fact: ospfv4_health
+
+- name: Parse ospf3 summary
+  ansible.utils.cli_parse:
+    command: "show ospf3 neighbor"
+    parser:
+      name: ansible.netcommon.content_templates
+    set_fact: ospfv6_health

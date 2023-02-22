@@ -8,7 +8,7 @@ The `network.ospf` enables user to manage the OSPF resources independent of plat
 
 **Capabilities**
 - `Build Brownfield Inventory`: Users want to be able to get the facts for OSPF resources and store it as host_vars thus enabling the capability to get facts for all the hosts within the inventory and store facts in a structured format which acts as SOT.
-- `OSPF Resource Management`: Users want to be able to manage the OSPFv2, OSPFv3 and OSPF interfaces configurations.This also includes the enablement of gathering facts, updating BGP resource host-vars and deploying config onto the appliance.
+- `OSPF Resource Management`: Users want to be able to manage the OSPFv2, OSPFv3 and OSPF interfaces configurations.This also includes the enablement of gathering facts, updating OSPF resource host-vars and deploying config onto the appliance.
 - `OSPF Health Checks`: Users want to be able to perform health checks for OSPF neighborship.These health checks should be able to provide the OSPF neighborship status with necessary details.
 
 ### Usage
@@ -16,7 +16,8 @@ The `network.ospf` enables user to manage the OSPF resources independent of plat
        `all_neigbors_up`
        `all_neighbors_down`
        `min_neighbors_up`
-- This role enables users to create a runtime brownfield inventory with all the OSPF configuration in terms of host vars. These host vars are ansible facts which have been gathered through the *_bgp_global and *_bgp_address_family network resource module.The tasks offered by this role could be observed as below:
+       `ospf_summary_status`
+- This role enables users to create a runtime brownfield inventory with all the OSPF configuration in terms of host vars. These host vars are ansible facts which have been gathered through the *ospfv2, *opfv3 and *ospf_interfaces network resource module.The tasks offered by this role could be observed as below:
 
 ### Perform OSPF Health Checks
 - Health Checks operation fetch the current status of OSPF Neighborship health.
@@ -42,6 +43,7 @@ health_checks.yml
               - name: all_neighbors_down
               - name: min_neighbors_up
                 min_count: 1
+              - name: ospf_status_summary
 ```
 
 
@@ -95,6 +97,38 @@ health_checks.yml
       actions:
         - name: deploy
 ```
+
+#### Detect configuration drift in OSPF Configuration
+- Detect operation will read the facts from the provided/default inventory and detect if any configuration changes are there on the appliances using overridden state.
+
+```yaml
+- name: 
+  hosts: ios
+  gather_facts: false
+  tasks:
+  - name: OSPF Manager
+    include_role:
+      name: network.ospf.run
+    vars:
+      actions:
+        - name: detect
+```
+
+#### Remediate configuration drift in OSPF Configuration
+- Remediate operation will read the facts from the provided/default inventory and Remediate if any configuration changes are there on the appliances using overridden state.
+
+```yaml
+- name: 
+  hosts: ios
+  gather_facts: false
+  tasks:
+  - name: OSPF Manager
+    include_role:
+      name: network.ospf.run
+    vars:
+      actions:
+        - name: remediate
+      
 ### Code of Conduct
 This collection follows the Ansible project's
 [Code of Conduct](https://docs.ansible.com/ansible/devel/community/code_of_conduct.html).
