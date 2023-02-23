@@ -12,4 +12,3 @@
     parser:
       name: ansible.netcommon.content_templates
     set_fact: ospfv6_health
-  
