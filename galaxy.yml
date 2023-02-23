@@ -5,10 +5,10 @@ dependencies:
   "ansible.netcommon": ">=4.1.0"
   "ansible.utils": ">=2.7.0"
 license_file: LICENSE
-name: bgp
+name: ospf
 description: Ansible Network OSPF enables user to manage the OSPF resources independent of platforms and perform OSPF health checks.
 namespace: network
 readme: README.md
-repository: https://github.com/redhat-cop/network.bgp
-issues: https://github.com/redhat-cop/network.bgp/issues
+repository: https://github.com/redhat-cop/network.ospf
+issues: https://github.com/redhat-cop/network.ospf/issues
 version: 1.0.0
