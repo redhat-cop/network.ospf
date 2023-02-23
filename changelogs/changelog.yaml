@@ -3,7 +3,7 @@ releases:
   1.0.0:
     changes:
       minor_changes:
-      - place remediate task in include dir.
+        - place remediate task in include dir.
     fragments:
       - move_remediate_to_includes.yaml
       - trivial_lint_fixes.yaml
