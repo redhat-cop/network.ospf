@@ -5,6 +5,6 @@ releases:
       minor_changes:
       - place remediate task in include dir.
     fragments:
-    - move_remediate_to_includes.yaml
-    - trivial_lint_fixes.yaml
+      - move_remediate_to_includes.yaml
+      - trivial_lint_fixes.yaml
     release_date: '2023-02-23'
