@@ -150,7 +150,7 @@ ok: [192.168.22.43] => {
 
 RETURN = """
   health_checks:
-    description: OSPF health checks 
+    description: OSPF health checks
     type: dict
 
 """
@@ -159,6 +159,7 @@ from ansible.errors import AnsibleFilterError
 
 ARGSPEC_CONDITIONALS = {}
 OSPF_FULL_STATES = ["FULL/BDR", "FULL/DR"]
+
 
 def health_check_view(*args, **kwargs):
     params = ["health_facts", "target"]
@@ -238,7 +239,7 @@ def health_check_view(*args, **kwargs):
                     details['neighbors'] = un_lst
                     n_dict['details'] = details
                 n_dict['check_status'] = get_status(stats, 'min', data['min_up']['min_count'])
-                if n_dict['check_status'] == 'unsuccessful'  and not data['min_up'].get('ignore_errors'):
+                if n_dict['check_status'] == 'unsuccessful' and not data['min_up'].get('ignore_errors'):
                     health_checks['status'] = 'unsuccessful'
                 health_checks['min_neighbors_up'] = n_dict
         else:
@@ -252,6 +253,7 @@ def get_status(stats, check, count=None):
     else:
         return 'successful' if count <= stats['up'] else 'unsuccessful'
 
+
 def get_health(checks):
     dict = {}
     dict['summary'] = is_present(checks, 'ospf_status_summary')
@@ -261,15 +263,17 @@ def get_health(checks):
 
     return dict
 
+
 def get_ignore_status(item):
     if not item.get("ignore_errors"):
         item['ignore_errors'] = False
     return item
 
+
 def is_present(health_checks, option):
     for item in health_checks:
         if item['name'] == option:
-             return get_ignore_status(item)
+            return get_ignore_status(item)
     return None
 
 
