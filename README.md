@@ -6,6 +6,25 @@ This repository contains the `network.ospf` Ansible Collection.
 
 The `network.ospf` enables user to manage the OSPF resources independent of platforms and perform SPF health checks.
 
+## Tested with Ansible
+
+Tested with ansible-core 2.13 releases.
+
+## Installation
+
+```
+ansible-galaxy collection install git+https://github.com/redhat-cop/network.ospf
+```
+
+You can also include it in a `requirements.yml` file and install it via `ansible-galaxy collection install -r requirements.yml` using the format:
+
+```yaml
+collections:
+- name: https://github.com/redhat-cop/network.ospf.git
+  type: git
+  version: main
+```
+
 **Capabilities**
 - `Build Brownfield Inventory`: Users want to be able to get the facts for OSPF resources and store it as host_vars thus enabling the capability to get facts for all the hosts within the inventory and store facts in a structured format which acts as SOT.
 - `OSPF Resource Management`: Users want to be able to manage the OSPFv2, OSPFv3 and OSPF interfaces configurations.This also includes the enablement of gathering facts, updating OSPF resource host-vars and deploying config onto the appliance.
