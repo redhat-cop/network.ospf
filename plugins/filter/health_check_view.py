@@ -18,134 +18,128 @@ DOCUMENTATION = """
 
 EXAMPLES = r"""
 - name: health_check
-    vars:
-      checks:
-        - name: all_neighbors_up
-          ignore_errors: true
-        - name: all_neighbors_down
-          ignore_errors: true
-        - name: min_neighbors_up
-          min_count: 2
-        - name: ospf_status_summary
+  vars:
+    checks:
+    - name: all_neighbors_up
+      ignore_errors: true
+    - name: all_neighbors_down
+      ignore_errors: true
+    - name: min_neighbors_up
+      min_count: 2
+    - name: ospf_status_summary
 
 - set_fact:
-   "ospf_health":{
-        "neighbors": [
-            {
-                "address": "11.0.13.3",
-                "dead_time": "00:00:38",
-                "interface": "GigabitEthernet0/1",
-                "neighbor_id": "3.3.3.3",
-                "peer_state": "FULL/BDR",
-                "priority": 1
-            },
-            {
-                "address": "10.0.12.2",
-                "dead_time": "00:00:33",
-                "interface": "GigabitEthernet0/0",
-                "neighbor_id": "2.2.2.2",
-                "peer_state": "FULL/BDR",
-                "priority": 1
-            }
-        ]
-    }
+  ospf_health:
+    neighbors:
+    - address: "11.0.13.3"
+      dead_time: "00:00:38"
+      interface: "GigabitEthernet0/1"
+      neighbor_id: "3.3.3.3"
+      peer_state: "FULL/BDR"
+      priority: 1
+    - address: "10.0.12.2"
+      dead_time: "00:00:33"
+      interface: "GigabitEthernet0/0"
+      neighbor_id: "2.2.2.2"
+      peer_state: "FULL/BDR"
+      priority: 1
 
 - name: Set health checks fact
   ansible.builtin.set_fact:
      health_checks: "{{ ospf_health | health_check_view(item) }}"
 
-ok: [192.168.22.43] => {
-    "failed_when_result": false,
-    "health_checks": {
-        "all_neighbors_down": {
-            "check_status": "unsuccessful",
-            "details": {
-                "neighbors": []
-            },
-            "down": 0,
-            "total": 2,
-            "up": 2
-        },
-        "all_neighbors_up": {
-            "check_status": "successful",
-            "details": {
-                "neighbors": [
-                    {
-                        "address": "11.0.13.3",
-                        "dead_time": "00:00:38",
-                        "interface": "GigabitEthernet0/1",
-                        "neighbor_id": "3.3.3.3",
-                        "peer_state": "FULL/BDR",
-                        "priority": 1
-                    },
-                    {
-                        "address": "10.0.12.2",
-                        "dead_time": "00:00:33",
-                        "interface": "GigabitEthernet0/0",
-                        "neighbor_id": "2.2.2.2",
-                        "peer_state": "FULL/BDR",
-                        "priority": 1
-                    }
-                ]
-            },
-            "down": 0,
-            "total": 2,
-            "up": 2
-        },
-        "min_neighbors_up": {
-            "check_status": "successful",
-            "details": {
-                "neighbors": [
-                    {
-                        "address": "11.0.13.3",
-                        "dead_time": "00:00:38",
-                        "interface": "GigabitEthernet0/1",
-                        "neighbor_id": "3.3.3.3",
-                        "peer_state": "FULL/BDR",
-                        "priority": 1
-                    },
-                    {
-                        "address": "10.0.12.2",
-                        "dead_time": "00:00:33",
-                        "interface": "GigabitEthernet0/0",
-                        "neighbor_id": "2.2.2.2",
-                        "peer_state": "FULL/BDR",
-                        "priority": 1
-                    }
-                ]
-            },
-            "down": 0,
-            "total": 2,
-            "up": 2
-        },
-        "ospf_status_summary": {
-            "details": {
-                "neighbors": [
-                    {
-                        "address": "11.0.13.3",
-                        "dead_time": "00:00:38",
-                        "interface": "GigabitEthernet0/1",
-                        "neighbor_id": "3.3.3.3",
-                        "peer_state": "FULL/BDR",
-                        "priority": 1
-                    },
-                    {
-                        "address": "10.0.12.2",
-                        "dead_time": "00:00:33",
-                        "interface": "GigabitEthernet0/0",
-                        "neighbor_id": "2.2.2.2",
-                        "peer_state": "FULL/BDR",
-                        "priority": 1
-                    }
-                ]
-            },
-            "down": 0,
-            "total": 2,
-            "up": 2
-        },
-        "status": "successful"
-    }
-}
+# ok: [192.168.22.43] => {
+#     "failed_when_result": false,
+#     "health_checks": {
+#         "all_neighbors_down": {
+#             "check_status": "unsuccessful",
+#             "details": {
+#                 "neighbors": []
+#             },
+#             "down": 0,
+#             "total": 2,
+#             "up": 2
+#         },
+#         "all_neighbors_up": {
+#             "check_status": "successful",
+#             "details": {
+#                 "neighbors": [
+#                     {
+#                         "address": "11.0.13.3",
+#                         "dead_time": "00:00:38",
+#                         "interface": "GigabitEthernet0/1",
+#                         "neighbor_id": "3.3.3.3",
+#                         "peer_state": "FULL/BDR",
+#                         "priority": 1
+#                     },
+#                     {
+#                         "address": "10.0.12.2",
+#                         "dead_time": "00:00:33",
+#                         "interface": "GigabitEthernet0/0",
+#                         "neighbor_id": "2.2.2.2",
+#                         "peer_state": "FULL/BDR",
+#                         "priority": 1
+#                     }
+#                 ]
+#             },
+#             "down": 0,
+#             "total": 2,
+#             "up": 2
+#         },
+#         "min_neighbors_up": {
+#             "check_status": "successful",
+#             "details": {
+#                 "neighbors": [
+#                     {
+#                         "address": "11.0.13.3",
+#                         "dead_time": "00:00:38",
+#                         "interface": "GigabitEthernet0/1",
+#                         "neighbor_id": "3.3.3.3",
+#                         "peer_state": "FULL/BDR",
+#                         "priority": 1
+#                     },
+#                     {
+#                         "address": "10.0.12.2",
+#                         "dead_time": "00:00:33",
+#                         "interface": "GigabitEthernet0/0",
+#                         "neighbor_id": "2.2.2.2",
+#                         "peer_state": "FULL/BDR",
+#                         "priority": 1
+#                     }
+#                 ]
+#             },
+#             "down": 0,
+#             "total": 2,
+#             "up": 2
+#         },
+#         "ospf_status_summary": {
+#             "details": {
+#                 "neighbors": [
+#                     {
+#                         "address": "11.0.13.3",
+#                         "dead_time": "00:00:38",
+#                         "interface": "GigabitEthernet0/1",
+#                         "neighbor_id": "3.3.3.3",
+#                         "peer_state": "FULL/BDR",
+#                         "priority": 1
+#                     },
+#                     {
+#                         "address": "10.0.12.2",
+#                         "dead_time": "00:00:33",
+#                         "interface": "GigabitEthernet0/0",
+#                         "neighbor_id": "2.2.2.2",
+#                         "peer_state": "FULL/BDR",
+#                         "priority": 1
+#                     }
+#                 ]
+#             },
+#             "down": 0,
+#             "total": 2,
+#             "up": 2
+#         },
+#         "status": "successful"
+#     }
+# }
 """
 
 RETURN = """
