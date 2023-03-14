@@ -12,3 +12,9 @@ Minor Changes
 -------------
 
 - place remediate task in include dir.
+
+Bugfixes
+--------
+
+- Fix when no neighbor is present.
+- Update directory structure for filter plugin.
