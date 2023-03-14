@@ -244,7 +244,7 @@ def health_check_view(*args, **kwargs):
 
 def get_status(stats, check, count=None):
     if check in ('up', 'down'):
-        return 'successful' if stats['total'] == stats[check] and status['total'] !=0 else 'unsuccessful'
+        return 'successful' if stats['total'] == stats[check] and stats['total'] !=0 else 'unsuccessful'
     else:
         return 'successful' if count <= stats['up'] else 'unsuccessful'
 
