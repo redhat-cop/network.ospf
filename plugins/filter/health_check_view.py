@@ -28,7 +28,7 @@ EXAMPLES = r"""
       min_count: 2
     - name: ospf_status_summary
 
-- set_fact:
+- ansible.builtin.set_fact:
   ospf_health:
     neighbors:
     - address: "11.0.13.3"
