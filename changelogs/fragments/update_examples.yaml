@@ -1,0 +1,3 @@
+---
+bugfixes:
+  - Fix when no neighbor is present.
