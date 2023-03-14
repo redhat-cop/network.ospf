@@ -2,9 +2,16 @@ ancestor: null
 releases:
   1.0.0:
     changes:
+      bugfixes:
+      - Fix when no neighbor is present.
+      - Update directory structure for filter plugin.
       minor_changes:
-        - place remediate task in include dir.
+      - place remediate task in include dir.
     fragments:
-      - move_remediate_to_includes.yaml
-      - trivial_lint_fixes.yaml
+    - change_dir_structures.yaml
+    - move_remediate_to_includes.yaml
+    - trivial.yaml
+    - trivial_lint_fixes.yaml
+    - update_examples.yaml
+    - update_workflow.yaml
     release_date: '2023-02-23'
