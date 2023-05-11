@@ -5,6 +5,19 @@ Network Ospf Collection Release Notes
 .. contents:: Topics
 
 
+v2.0.0
+======
+
+Major Changes
+-------------
+
+- Add support for scm operations and remove inventory_directory attribute.
+
+Bugfixes
+--------
+
+- rename var in task.
+
 v1.0.0
 ======
 
