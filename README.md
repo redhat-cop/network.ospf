@@ -26,8 +26,8 @@ collections:
 ```
 
 **Capabilities**
-- `Build Brownfield Inventory`: Users want to be able to get the facts for OSPF resources and store it as host_vars thus enabling the capability to get facts for all the hosts within the inventory and store facts in a structured format which acts as SOT.
-- `OSPF Resource Management`: Users want to be able to manage the OSPFv2, OSPFv3 and OSPF interfaces configurations.This also includes the enablement of gathering facts, updating OSPF resource host-vars and deploying config onto the appliance.
+- `Build Brownfield Inventory`: This enables users to fetch the YAML structured resource module facts for OSPF resources OSPFv2, OSPFv3, ospf_interfaces and save it as host_vars to local or remote data-store which could be used as single SOT for other operations.
+- `OSPF Resource Management`: Users want to be able to manage the OSPFv2, OSPFv3 and OSPF interfaces configurations.This also includes the enablement of gathering facts, updating OSPF resource host-vars and deploying config onto the network appliances.
 - `OSPF Health Checks`: Users want to be able to perform health checks for OSPF neighborship.These health checks should be able to provide the OSPF neighborship status with necessary details.
 
 ### Usage
@@ -70,28 +70,53 @@ health_checks.yml
 ### Building Brownfield Inventory with Persist
 - Persist operation fetch the ospfv2, ospfv3 and ospf_interfaces facts and store them as host vars.
 - Result of successful Persist operation would be an Inventory directory having facts as host vars acting as SOT
-  for operations like deploy, etc.
+  for operations like deploy, remediate, detect, etc.
 
+#### fetch ospf resource facts and build local data_store.
 ```yaml
 - name: Persist the facts into host vars
-  hosts: ios
+  hosts: rtr1
   gather_facts: false
   tasks:
-  - name: OSPF Manager
+  - name: Network OSPF Manager
     ansible.builtin.include_role:
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
       actions:
         - name: persist
-          inventory_directory: './inventory'
+      data_store:
+        local: "~/backup/network"
 ```
 
-#### Gather OSPF Facts
+#### fetch ospf resource facts and publish persisted host_vars inventory to github repository.
+```yaml
+- name: Persist the facts into remote data_store which is a github repository
+  hosts: rtr1
+  gather_facts: false
+  tasks:
+  - name: Network OSPF Manager
+    ansible.builtin.include_role:
+      name: network.ospf.run
+    vars:
+      ansible_network_os: cisco.ios.ios
+      actions:
+        - name: persist
+      persist_empty: false
+      data_store:
+        scm:
+          origin:
+            url: "{{ your_github_repo }}"
+            token: "{{ github_access_token }}"
+            user:
+              name: "{{ ansible_github }}"
+              email: "{{ your_email@example.com }}"
+```
+### Display Structured Data with Gather
 - Gather operation gathers the running-confguration specific to ospfv2, ospfv3 and ospf_interfaces resources.
 
 ```yaml
-- name: Gather Facts
+- name: Display OSPF resources in structured format
   hosts: ios
   gather_facts: false
   tasks:
@@ -105,54 +130,133 @@ health_checks.yml
 ```
 
 #### Deploy OSPF Configuration
-- Deploy operation will read the facts from the provided/default inventory and deploy the changes on to the appliances.
+- Deploy operation will read the facts from the provided/default or remote inventory and deploy the changes on to the appliances.
 
+#### read host_vars from local data_store and deploy on to the field.
 ```yaml
-- name: Deploy host vars facts
-  hosts: ios
+- name: Deploy changes
+  hosts: rtr1
   gather_facts: false
   tasks:
-  - name: OSPF Manager
-    include_role:
+  - name: Network OSPF Manager
+    ansible.builtin.include_role:
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
       actions:
         - name: deploy
+      data_store:
+        local: "~/backup/network"
+```
+
+#### retrieve host_cars from github repository and deploy changes on to the field.
+```yaml
+- name: retrieve config from github repo and deploy changes
+  hosts: rtr1
+  gather_facts: false
+  tasks:
+  - name: Network OSPF Manager
+    ansible.builtin.include_role:
+      name: network.ospf.run
+    vars:
+      ansible_network_os: cisco.ios.ios
+      actions:
+        - name: deploy
+      persist_empty: false
+      data_store:
+        scm:
+          origin:
+            url: "{{ your_github_repo }}"
+            token: "{{ github_access_token }}"
+            user:
+              name: "{{ ansible_github }}"
+              email: "{{ your_email@example.com }}"
 ```
 
 #### Detect configuration drift in OSPF Configuration
-- Detect operation will read the facts from the provided/default inventory and detect if any configuration changes are there on the appliances using overridden state.
+- Detect operation will read the facts from the local provided/default inventory and detect if any configuration diff exist w.r.t running-config.
 
 ```yaml
-- name: 
-  hosts: ios
+- name: Configuration drift detection
+  hosts: rtr1
   gather_facts: false
   tasks:
-  - name: OSPF Manager
+  - name: Network OSPF Manager
+    ansible.builtin.include_role:
+      name: network.ospf.run
+    vars:
+      ansible_network_os: cisco.ios.ios
+      actions:
+        - name: detect
+      data_store:
+        local: "~/backup/network"
+```
+
+- Detect operation will read the facts from github repository inventory and detect if any configuration diff exist w.r.t running-config.
+
+#### detect the config difference between host_vars in local data_store and running config.
+```yaml
+- name: Configuration drift detection
+  hosts: rtr1
+  gather_facts: false
+  tasks:
+  - name: Network OSPF Manager
     include_role:
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
       actions:
         - name: detect
+      data_store:
+        scm:
+          origin:
+            url: "{{ your_github_repo }}"
+            token: "{{ github_access_token }}"
+            user:
+              name: "{{ ansible_github }}"
+              email: "{{ your_email@example.com }}"
 ```
 
 #### Remediate configuration drift in OSPF Configuration
-- Remediate operation will read the facts from the provided/default inventory and Remediate if any configuration changes are there on the appliances using overridden state.
+- Remediate operation will read the facts from the locally provided/default inventory and remediate if any configuration changes are there on the appliances using overridden state.
 
 ```yaml
-- name: 
-  hosts: ios
+- name: Remediate configuration
+  hosts: rtr1
   gather_facts: false
   tasks:
-  - name: OSPF Manager
+  - name: Network OSPF Manager
     include_role:
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
       actions:
         - name: remediate
+      data_store:
+        local: "~/backup/network"
+```
+- Remediate operation will read the facts from github repository and remediate if any configuration changes are there on the appliances using overridden state.
+
+```yaml
+- name: Remediate configuration
+  hosts: rtr1
+  gather_facts: false
+  tasks:
+  - name: Network OSPF Manager
+    include_role:
+      name: network.ospf.run
+    vars:
+      ansible_network_os: cisco.ios.ios
+      actions:
+        - name: remediate
+      data_store:
+        scm:
+          origin:
+            url: "{{ your_github_repo }}"
+            token: "{{ github_access_token }}"
+            user:
+              name: "{{ ansible_github }}"
+              email: "{{ your_email@example.com }}"
       
 ### Code of Conduct
 This collection follows the Ansible project's
