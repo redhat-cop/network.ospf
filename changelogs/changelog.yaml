@@ -15,3 +15,13 @@ releases:
       - update_examples.yaml
       - update_workflow.yaml
     release_date: '2023-02-23'
+  2.0.0:
+    changes:
+      bugfixes:
+        - rename var in task.
+      major_changes:
+        - Add support for scm operations and remove inventory_directory attribute.
+    fragments:
+      - fix_health_check_var_name.yaml
+      - scm_enablement_and_doc_changes.yaml
+    release_date: '2023-05-11'

@@ -1,3 +1,0 @@
----
-major_changes:
-  - Add support for scm operations and remove inventory_directory attribute.
