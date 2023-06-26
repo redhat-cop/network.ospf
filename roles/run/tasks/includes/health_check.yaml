@@ -10,7 +10,7 @@
 
 - name: Set health checks fact
   ansible.builtin.set_fact:
-    health_checks: "{{ ospf_health | network.ospf.health_check_view(action) }}"
+    health_checks: "{{ ospf_health | network.ospf.health_check_view(operation) }}"
 
 - name: OSPF health checks
   ansible.builtin.debug:
