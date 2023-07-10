@@ -54,7 +54,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
-      actions:
+      operations:
         - name: health_check
           vars:
             details: True
@@ -83,7 +83,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
-      actions:
+      operations:
         - name: persist
       data_store:
         local: "~/backup/network"
@@ -100,7 +100,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
-      actions:
+      operations:
         - name: persist
       persist_empty: false
       data_store:
@@ -125,7 +125,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
-      actions:
+      operations:
         - name: gather
 ```
 
@@ -143,7 +143,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
-      actions:
+      operations:
         - name: deploy
       data_store:
         local: "~/backup/network"
@@ -160,7 +160,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
-      actions:
+      operations:
         - name: deploy
       persist_empty: false
       data_store:
@@ -186,7 +186,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
-      actions:
+      operations:
         - name: detect
       data_store:
         local: "~/backup/network"
@@ -205,7 +205,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
-      actions:
+      operations:
         - name: detect
       data_store:
         scm:
@@ -230,7 +230,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
-      actions:
+      operations:
         - name: remediate
       data_store:
         local: "~/backup/network"
@@ -247,7 +247,7 @@ health_checks.yml
       name: network.ospf.run
     vars:
       ansible_network_os: cisco.ios.ios
-      actions:
+      operations:
         - name: remediate
       data_store:
         scm:
