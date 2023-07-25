@@ -3,7 +3,7 @@ authors:
   - Rohit Thakur (rohitthakur2590)
 dependencies:
   "ansible.netcommon": ">=5.1.1"
-  "ansible.utils": ">=2.7.0"
+  "ansible.utils": ">=2.9.0"
 license_file: LICENSE
 name: ospf
 description: Ansible Network OSPF enables user to manage the OSPF resources independent of platforms and perform OSPF health checks.
