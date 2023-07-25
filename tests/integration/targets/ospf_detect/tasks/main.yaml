@@ -1,0 +1,51 @@
+---
+- name: Debug
+  ansible.builtin.debug:
+    msg: "START network.ospf detect opeartion integration tests on connection={{ ansible_connection }}"
+
+- name: Cleanup, Read and Deploy
+  block:
+    - name: Reset configuration
+      ansible.builtin.include_tasks: _cleanup.yaml
+
+    - name: Set resources
+      ansible.builtin.set_fact:
+        test_resources:
+          - 'ospfv2'
+          - 'ospfv3'
+          - 'ospf_interfaces'
+
+    - name: Set data data_store
+      ansible.builtin.set_fact:
+        test_data_store:
+          local: "~/test_backup"
+
+    - name: Run network.ospf validated content persist operation
+      ansible.builtin.include_role:
+        name: network.ospf.run
+      vars:
+        operations:
+          - name: persist
+        data_store: "{{ test_data_store }}"
+
+    - name: Run network.ospf validated content with detect operation
+      ansible.builtin.include_role:
+        name: network.ospf.run
+      vars:
+        operations:
+          - name: detect
+        data_store: "{{ test_data_store }}"
+      register: ospf_result
+
+    - name: Assert that gresult
+      ansible.builtin.assert:
+        that:
+          - ospf_result.changed == false
+
+  always:
+    - name: Reset configuration
+      ansible.builtin.include_tasks: _cleanup.yaml
+
+- name: Debug
+  ansible.builtin.debug:
+    msg: "END network.ospf detect operation integration tests on connection={{ ansible_connection }}"
