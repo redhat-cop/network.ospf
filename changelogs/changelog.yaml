@@ -25,3 +25,13 @@ releases:
       - fix_health_check_var_name.yaml
       - scm_enablement_and_doc_changes.yaml
     release_date: '2023-05-11'
+  3.0.0:
+    changes:
+      doc_changes:
+        - Update docs, tests and GH matrix.
+      major_changes:
+        - Change `actions` to `operations`
+    fragments:
+      - rename_actions_to_operations.yaml
+      - update_docs.yaml
+    release_date: '2023-07-25'

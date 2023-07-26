@@ -5,6 +5,19 @@ Network Ospf Collection Release Notes
 .. contents:: Topics
 
 
+v3.0.0
+======
+
+Major Changes
+-------------
+
+- Change `actions` to `operations`
+
+Documentation Changes
+---------------------
+
+- Update docs, tests and GH matrix.
+
 v2.0.0
 ======
 
