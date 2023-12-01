@@ -97,8 +97,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: >-
-          steps:
-      - run: >-
           python -c "assert 'failure' not in
           set([
           '${{ needs.changelog.result }}',
