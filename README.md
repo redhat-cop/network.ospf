@@ -1,6 +1,6 @@
 # Network OSPF Validated Content
 [![CI](https://github.com/redhat-cop/network.ospf/actions/workflows/tests.yml/badge.svg?event=schedule)](https://github.com/redhat-cop/network.ospf/actions/workflows/tests.yml)
-[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7404/badge)](https://bestpractices.coreinfrastructure.org/projects/7404)
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7662/badge)](https://bestpractices.coreinfrastructure.org/projects/7662)
 
 This repository contains the `network.ospf` Ansible Collection.
 
