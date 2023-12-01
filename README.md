@@ -10,7 +10,7 @@ The `network.ospf` enables users to manage the OSPF resources independent of pla
 
 ## Tested with Ansible
 
-Tested with ansible-core 2.13 releases.
+Tested with ansible-core 2.14 releases.
 
 ## Installation
 #### Install from Automation Hub
