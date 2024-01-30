@@ -286,14 +286,14 @@ health_checks.yml
 
 The project uses tox to run `ansible-lint` and `ansible-test sanity`.
 Assuming this repository is checked out in the proper structure,
-e.g. `collections_root/ansible_collections/network/backup`, run:
+e.g. `collections_root/ansible_collections/network/ospf`, run:
 
 ```shell
   tox -e ansible-lint
   tox -e py39-sanity
 ```
 
-To run integration tests, ensure that your inventory has a `network_base` group.
+To run integration tests, ensure that your inventory has a `network_ospf` group.
 Depending on what test target you are running, comment out the host(s).
 
 ```shell
@@ -333,7 +333,7 @@ Please read and familiarize yourself with this document.
 
 ## Release notes
 
-Release notes are available [here](https://github.com/redhat-cop/network.backup/blob/main/CHANGELOG.rst).
+Release notes are available [here](https://github.com/redhat-cop/network.ospf/blob/main/CHANGELOG.rst).
 
 ## Related information
 
