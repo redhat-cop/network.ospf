@@ -1,0 +1,4 @@
+---
+major_changes:
+  - Restructured the `run` role into a single `network.ospf` role.
+  - Updated the documentation to reflect these changes.
