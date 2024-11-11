@@ -1,6 +1,6 @@
 # Network OSPF Role.
 
-A role to provide platform-agnostic way of managing OSPF protocol/resources on supported network platforms.
+The role enables user to manage the OSPF resources independent of platforms and perform OSPF health checks.
 
 ## Capabilities
 
