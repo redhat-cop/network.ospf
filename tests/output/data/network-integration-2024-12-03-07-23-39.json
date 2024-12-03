@@ -1,0 +1,28 @@
+{
+    "targets": {
+        "ospf_deploy": {
+            "aliases": [
+                "context//", 
+                "context//ospf_deploy", 
+                "context/target/", 
+                "context/target/ospf_deploy", 
+                "network/", 
+                "network/ospf/", 
+                "network/ospf/ospf_deploy", 
+                "non_destructive/", 
+                "non_destructive/ospf_deploy", 
+                "non_module/", 
+                "non_module/ospf_deploy", 
+                "ospf_deploy", 
+                "role/", 
+                "role/ospf_deploy"
+            ], 
+            "modules": [], 
+            "name": "ospf_deploy", 
+            "run_time_seconds": 9, 
+            "setup_always": [], 
+            "setup_once": [], 
+            "type": "role"
+        }
+    }
+}

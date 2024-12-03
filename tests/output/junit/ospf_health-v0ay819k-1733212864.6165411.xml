@@ -1,0 +1,177 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="12" time="7.095610141754150390625">
+	<testsuite disabled="0" errors="0" failures="0" name="ospf_health-v0ay819k" skipped="0" tests="12" time="7.095610141754150390625">
+		<testcase classname="tests/integration/targets/ospf_health/tasks/main.yaml:2" name="[54.190.208.146] ospf: ospf_health : Debug msg=START network.ospf health_check opeartion integration tests on connection={{ ansible_connection }}" time="0.07462406158447266">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;START network.ospf health_check opeartion integration tests on connection=ansible.netcommon.network_cli&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_health/tasks/main.yaml:8" name="[54.190.208.146] ospf: Run network.ospf validated content with health_checks operation name=network.ospf.health_checks" time="0.012520313262939453">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include_args&quot;: {
+        &quot;name&quot;: &quot;network.ospf.health_checks&quot;
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yml:2" name="[54.190.208.146] ospf: network.ospf.health_checks : Include tasks _raw_params={{ operation.name }}.yaml" time="0.03201913833618164">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;All items completed&quot;,
+    &quot;results&quot;: [
+        {
+            &quot;ansible_loop_var&quot;: &quot;operation&quot;,
+            &quot;include&quot;: &quot;health_check.yaml&quot;,
+            &quot;include_args&quot;: {},
+            &quot;operation&quot;: {
+                &quot;name&quot;: &quot;health_check&quot;,
+                &quot;vars&quot;: {
+                    &quot;checks&quot;: [
+                        {
+                            &quot;name&quot;: &quot;all_neighbors_up&quot;
+                        },
+                        {
+                            &quot;ignore_errors&quot;: true,
+                            &quot;name&quot;: &quot;all_neighbors_down&quot;
+                        },
+                        {
+                            &quot;min_count&quot;: 1,
+                            &quot;name&quot;: &quot;min_neighbors_up&quot;
+                        }
+                    ],
+                    &quot;details&quot;: true
+                }
+            }
+        }
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yml:2" name="[include] ospf: network.ospf.health_checks : Include tasks _raw_params={{ operation.name }}.yaml" time="0.044658660888671875">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/ospf/roles/health_checks/tasks/health_check.yaml (args={} vars={'operation': {'name': 'health_check', 'vars': {'details': True, 'checks': [{'name': 'all_neighbors_up'}, {'name': 'all_neighbors_down', 'ignore_errors': True}, {'name': 'min_neighbors_up', 'min_count': 1}]}}, '_ansible_item_label': {'name': 'health_check', 'vars': {'details': True, 'checks': [{'name': 'all_neighbors_up'}, {'name': 'all_neighbors_down', 'ignore_errors': True}, {'name': 'min_neighbors_up', 'min_count': 1}]}}}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:health_check.yaml:2" name="[54.190.208.146] ospf: network.ospf.health_checks : Include tasks _raw_params={{ ansible_network_os.split('.')[2] }}.yaml" time="0.01588916778564453">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;nxos.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:health_check.yaml:2" name="[include] ospf: network.ospf.health_checks : Include tasks _raw_params={{ ansible_network_os.split('.')[2] }}.yaml" time="0.027083396911621094">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/ospf/roles/health_checks/tasks/nxos.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:nxos.yaml:2" name="[54.190.208.146] ospf: network.ospf.health_checks : Parse ospf summary command=show ip ospf neighbor, parser={'name': 'ansible.netcommon.content_templates'}, set_fact=ospfv4_health" time="5.4417455196380615">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;ospfv4_health&quot;: {}
+    },
+    &quot;changed&quot;: false,
+    &quot;parsed&quot;: {},
+    &quot;stdout&quot;: &quot;Note:  process currently not running&quot;,
+    &quot;stdout_lines&quot;: [
+        &quot;Note:  process currently not running&quot;
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:nxos.yaml:9" name="[54.190.208.146] ospf: network.ospf.health_checks : Parse ospf3 summary command=show ipv6 ospfv3 neighbor, parser={'name': 'ansible.netcommon.content_templates'}, set_fact=ospfv6_health" time="1.1153857707977295">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;ospfv6_health&quot;: {}
+    },
+    &quot;changed&quot;: false,
+    &quot;parsed&quot;: {},
+    &quot;stdout&quot;: &quot;&quot;,
+    &quot;stdout_lines&quot;: []
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:health_check.yaml:5" name="[54.190.208.146] ospf: network.ospf.health_checks : Set ospf healths ospf_health={'v4': '{{ ospfv4_health }}', 'v6': '{{ ospfv6_health }}'}" time="0.09128570556640625">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;ospf_health&quot;: {
+            &quot;v4&quot;: {},
+            &quot;v6&quot;: {}
+        }
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:health_check.yaml:11" name="[54.190.208.146] ospf: network.ospf.health_checks : Set health checks fact health_checks={{ ospf_health | network.ospf.health_check_view(operation) }}" time="0.08797836303710938">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;health_checks&quot;: {
+            &quot;all_neighbors_down&quot;: {
+                &quot;check_status&quot;: &quot;unsuccessful&quot;,
+                &quot;details&quot;: {
+                    &quot;neighbors&quot;: []
+                },
+                &quot;down&quot;: 0,
+                &quot;total&quot;: 0,
+                &quot;up&quot;: 0
+            },
+            &quot;all_neighbors_up&quot;: {
+                &quot;check_status&quot;: &quot;unsuccessful&quot;,
+                &quot;details&quot;: {
+                    &quot;neighbors&quot;: []
+                },
+                &quot;down&quot;: 0,
+                &quot;total&quot;: 0,
+                &quot;up&quot;: 0
+            },
+            &quot;min_neighbors_up&quot;: {
+                &quot;check_status&quot;: &quot;unsuccessful&quot;,
+                &quot;details&quot;: {
+                    &quot;neighbors&quot;: []
+                },
+                &quot;down&quot;: 0,
+                &quot;total&quot;: 0,
+                &quot;up&quot;: 0
+            },
+            &quot;status&quot;: &quot;unsuccessful&quot;
+        }
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:health_check.yaml:15" name="[54.190.208.146] ospf: network.ospf.health_checks : OSPF health checks var=health_checks" time="0.08532857894897461">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;health_checks&quot;: {
+        &quot;all_neighbors_down&quot;: {
+            &quot;check_status&quot;: &quot;unsuccessful&quot;,
+            &quot;details&quot;: {
+                &quot;neighbors&quot;: []
+            },
+            &quot;down&quot;: 0,
+            &quot;total&quot;: 0,
+            &quot;up&quot;: 0
+        },
+        &quot;all_neighbors_up&quot;: {
+            &quot;check_status&quot;: &quot;unsuccessful&quot;,
+            &quot;details&quot;: {
+                &quot;neighbors&quot;: []
+            },
+            &quot;down&quot;: 0,
+            &quot;total&quot;: 0,
+            &quot;up&quot;: 0
+        },
+        &quot;min_neighbors_up&quot;: {
+            &quot;check_status&quot;: &quot;unsuccessful&quot;,
+            &quot;details&quot;: {
+                &quot;neighbors&quot;: []
+            },
+            &quot;down&quot;: 0,
+            &quot;total&quot;: 0,
+            &quot;up&quot;: 0
+        },
+        &quot;status&quot;: &quot;unsuccessful&quot;
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_health/tasks/main.yaml:24" name="[54.190.208.146] ospf: ospf_health : Debug msg=END network.ospf health_check opeartion integration tests on connection={{ ansible_connection }}" time="0.06709146499633789">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;END network.ospf health_check opeartion integration tests on connection=ansible.netcommon.network_cli&quot;
+}</system-out>
+		</testcase>
+	</testsuite>
+</testsuites>

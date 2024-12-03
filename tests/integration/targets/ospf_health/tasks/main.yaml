@@ -7,7 +7,7 @@
   block:
     - name: Run network.ospf validated content with health_checks operation
       ansible.builtin.include_role:
-        name: network.ospf.run
+        name: network.ospf.health_checks
       vars:
         operations:
           - name: health_check

@@ -1,0 +1,28 @@
+{
+    "targets": {
+        "ospf_health": {
+            "aliases": [
+                "context//", 
+                "context//ospf_health", 
+                "context/target/", 
+                "context/target/ospf_health", 
+                "network/", 
+                "network/ospf/", 
+                "network/ospf/ospf_health", 
+                "non_destructive/", 
+                "non_destructive/ospf_health", 
+                "non_module/", 
+                "non_module/ospf_health", 
+                "ospf_health", 
+                "role/", 
+                "role/ospf_health"
+            ], 
+            "modules": [], 
+            "name": "ospf_health", 
+            "run_time_seconds": 8, 
+            "setup_always": [], 
+            "setup_once": [], 
+            "type": "role"
+        }
+    }
+}

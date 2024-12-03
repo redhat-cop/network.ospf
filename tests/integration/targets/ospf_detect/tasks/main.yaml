@@ -22,7 +22,7 @@
 
     - name: Run network.ospf validated content persist operation
       ansible.builtin.include_role:
-        name: network.ospf.run
+        name: network.ospf.detect
       vars:
         operations:
           - name: persist
@@ -30,7 +30,7 @@
 
     - name: Run network.ospf validated content with detect operation
       ansible.builtin.include_role:
-        name: network.ospf.run
+        name: network.ospf.detect
       vars:
         operations:
           - name: detect

@@ -7,7 +7,7 @@
   block:
     - name: Run network.ospf validated content with gather operation
       ansible.builtin.include_role:
-        name: network.ospf.run
+        name: network.ospf.gather
       vars:
         operations:
           - name: gather

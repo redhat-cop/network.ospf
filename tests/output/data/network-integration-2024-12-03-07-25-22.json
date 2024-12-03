@@ -1,0 +1,28 @@
+{
+    "targets": {
+        "ospf_detect": {
+            "aliases": [
+                "context//", 
+                "context//ospf_detect", 
+                "context/target/", 
+                "context/target/ospf_detect", 
+                "network/", 
+                "network/ospf/", 
+                "network/ospf/ospf_detect", 
+                "non_destructive/", 
+                "non_destructive/ospf_detect", 
+                "non_module/", 
+                "non_module/ospf_detect", 
+                "ospf_detect", 
+                "role/", 
+                "role/ospf_detect"
+            ], 
+            "modules": [], 
+            "name": "ospf_detect", 
+            "run_time_seconds": 12, 
+            "setup_always": [], 
+            "setup_once": [], 
+            "type": "role"
+        }
+    }
+}

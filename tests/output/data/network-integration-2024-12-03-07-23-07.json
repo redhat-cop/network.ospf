@@ -1,0 +1,28 @@
+{
+    "targets": {
+        "ospf_gather": {
+            "aliases": [
+                "context//", 
+                "context//ospf_gather", 
+                "context/target/", 
+                "context/target/ospf_gather", 
+                "network/", 
+                "network/ospf/", 
+                "network/ospf/ospf_gather", 
+                "non_destructive/", 
+                "non_destructive/ospf_gather", 
+                "non_module/", 
+                "non_module/ospf_gather", 
+                "ospf_gather", 
+                "role/", 
+                "role/ospf_gather"
+            ], 
+            "modules": [], 
+            "name": "ospf_gather", 
+            "run_time_seconds": 15, 
+            "setup_always": [], 
+            "setup_once": [], 
+            "type": "role"
+        }
+    }
+}

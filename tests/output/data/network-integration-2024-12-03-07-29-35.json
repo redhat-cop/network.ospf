@@ -1,0 +1,28 @@
+{
+    "targets": {
+        "ospf_remediate": {
+            "aliases": [
+                "context//", 
+                "context//ospf_remediate", 
+                "context/target/", 
+                "context/target/ospf_remediate", 
+                "network/", 
+                "network/ospf/", 
+                "network/ospf/ospf_remediate", 
+                "non_destructive/", 
+                "non_destructive/ospf_remediate", 
+                "non_module/", 
+                "non_module/ospf_remediate", 
+                "ospf_remediate", 
+                "role/", 
+                "role/ospf_remediate"
+            ], 
+            "modules": [], 
+            "name": "ospf_remediate", 
+            "run_time_seconds": 14, 
+            "setup_always": [], 
+            "setup_once": [], 
+            "type": "role"
+        }
+    }
+}

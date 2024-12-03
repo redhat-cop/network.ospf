@@ -1,0 +1,158 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="15" time="1.9583609104156494140625">
+	<testsuite disabled="0" errors="0" failures="0" name="ospf_deploy-43lcxt8b" skipped="1" tests="15" time="1.9583609104156494140625">
+		<testcase classname="tests/integration/targets/ospf_deploy/tasks/main.yaml:2" name="[54.190.208.146] ospf: ospf_deploy : Debug msg=START network.ospf deploy opeartion integration tests on connection={{ ansible_connection }}" time="0.05615854263305664">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;START network.ospf deploy opeartion integration tests on connection=ansible.netcommon.network_cli&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_deploy/tasks/main.yaml:8" name="[54.190.208.146] ospf: ospf_deploy : Reset configuration _raw_params=_cleanup.yaml" time="0.00659489631652832">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;_cleanup.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_deploy/tasks/main.yaml:8" name="[include] ospf: ospf_deploy : Reset configuration _raw_params=_cleanup.yaml" time="0.010032176971435547">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/ospf/tests/output/.tmp/integration/ospf_deploy-hko7p61v-ÅÑŚÌβŁÈ/tests/integration/targets/ospf_deploy/tasks/_cleanup.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_deploy/tasks/_cleanup.yaml:2" name="[54.190.208.146] ospf: ospf_deploy : Clean persist operation output path=~/test_backup, state=absent" time="0.944237232208252">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;invocation&quot;: {
+        &quot;module_args&quot;: {
+            &quot;_diff_peek&quot;: null,
+            &quot;_original_basename&quot;: null,
+            &quot;access_time&quot;: null,
+            &quot;access_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;attributes&quot;: null,
+            &quot;follow&quot;: true,
+            &quot;force&quot;: false,
+            &quot;group&quot;: null,
+            &quot;mode&quot;: null,
+            &quot;modification_time&quot;: null,
+            &quot;modification_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;owner&quot;: null,
+            &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+            &quot;recurse&quot;: false,
+            &quot;selevel&quot;: null,
+            &quot;serole&quot;: null,
+            &quot;setype&quot;: null,
+            &quot;seuser&quot;: null,
+            &quot;src&quot;: null,
+            &quot;state&quot;: &quot;absent&quot;,
+            &quot;unsafe_writes&quot;: false
+        }
+    },
+    &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+    &quot;state&quot;: &quot;absent&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_deploy/tasks/main.yaml:11" name="[54.190.208.146] ospf: ospf_deploy : Set data data_store test_data_store={'local': '~/test_backup'}" time="0.049452781677246094">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;test_data_store&quot;: {
+            &quot;local&quot;: &quot;~/test_backup&quot;
+        }
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_deploy/tasks/main.yaml:16" name="[54.190.208.146] ospf: ospf_deploy : Set resources test_resources=['ospfv2', 'ospfv3', 'ospf_interfaces']" time="0.05976438522338867">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;test_resources&quot;: [
+            &quot;ospfv2&quot;,
+            &quot;ospfv3&quot;,
+            &quot;ospf_interfaces&quot;
+        ]
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_deploy/tasks/main.yaml:23" name="[54.190.208.146] ospf: Run network.ospf validated content with deploy operation name=network.ospf.deploy" time="0.008375167846679688">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include_args&quot;: {
+        &quot;name&quot;: &quot;network.ospf.deploy&quot;
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[54.190.208.146] ospf: network.ospf.deploy : Resolve target resources _raw_params=resources.yaml" time="0.01144719123840332">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;resources.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[include] ospf: network.ospf.deploy : Resolve target resources _raw_params=resources.yaml" time="0.01595449447631836">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/ospf/roles/deploy/tasks/resources.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:resources.yaml:2" name="[54.190.208.146] ospf: network.ospf.deploy : Set resources ospf_resources=['ospfv2', 'ospfv3', 'ospf_interfaces']" time="0.05880379676818848">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;ospf_resources&quot;: [
+            &quot;ospfv2&quot;,
+            &quot;ospfv3&quot;,
+            &quot;ospf_interfaces&quot;
+        ]
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:resources.yaml:10" name="[54.190.208.146] ospf: network.ospf.deploy : Set resources ospf_resources=['ospfv2', 'ospfv3', 'ospf_interfaces']" time="0.00982809066772461">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:5" name="[54.190.208.146] ospf: Invoke deploy function name=network.base.resource_manager" time="0.006262540817260742">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include_args&quot;: {
+        &quot;name&quot;: &quot;network.base.resource_manager&quot;
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_deploy/tasks/main.yaml:46" name="[54.190.208.146] ospf: ospf_deploy : Reset configuration _raw_params=_cleanup.yaml" time="0.008224964141845703">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;_cleanup.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_deploy/tasks/main.yaml:46" name="[include] ospf: ospf_deploy : Reset configuration _raw_params=_cleanup.yaml" time="0.01136469841003418">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/ospf/tests/output/.tmp/integration/ospf_deploy-hko7p61v-ÅÑŚÌβŁÈ/tests/integration/targets/ospf_deploy/tasks/_cleanup.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_deploy/tasks/_cleanup.yaml:2" name="[54.190.208.146] ospf: ospf_deploy : Clean persist operation output path=~/test_backup, state=absent" time="0.7018599510192871">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;invocation&quot;: {
+        &quot;module_args&quot;: {
+            &quot;_diff_peek&quot;: null,
+            &quot;_original_basename&quot;: null,
+            &quot;access_time&quot;: null,
+            &quot;access_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;attributes&quot;: null,
+            &quot;follow&quot;: true,
+            &quot;force&quot;: false,
+            &quot;group&quot;: null,
+            &quot;mode&quot;: null,
+            &quot;modification_time&quot;: null,
+            &quot;modification_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;owner&quot;: null,
+            &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+            &quot;recurse&quot;: false,
+            &quot;selevel&quot;: null,
+            &quot;serole&quot;: null,
+            &quot;setype&quot;: null,
+            &quot;seuser&quot;: null,
+            &quot;src&quot;: null,
+            &quot;state&quot;: &quot;absent&quot;,
+            &quot;unsafe_writes&quot;: false
+        }
+    },
+    &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+    &quot;state&quot;: &quot;absent&quot;
+}</system-out>
+		</testcase>
+	</testsuite>
+</testsuites>

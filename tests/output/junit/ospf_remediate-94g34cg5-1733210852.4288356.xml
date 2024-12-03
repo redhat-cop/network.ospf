@@ -1,0 +1,293 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="1" tests="27" time="6.161378383636474609375">
+	<testsuite disabled="0" errors="0" failures="1" name="ospf_remediate-94g34cg5" skipped="4" tests="27" time="6.161378383636474609375">
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/main.yaml:2" name="[54.190.208.146] ospf: ospf_remediate : Debug msg=START network.ospf remediate opeartion integration tests on connection={{ ansible_connection }}" time="0.0811300277709961">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;START network.ospf remediate opeartion integration tests on connection=ansible.netcommon.network_cli&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/main.yaml:8" name="[54.190.208.146] ospf: ospf_remediate : Reset configuration _raw_params=_cleanup.yaml" time="0.010233163833618164">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;_cleanup.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/main.yaml:8" name="[include] ospf: ospf_remediate : Reset configuration _raw_params=_cleanup.yaml" time="0.015340566635131836">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/ospf/tests/output/.tmp/integration/ospf_remediate-4z3lauhi-ÅÑŚÌβŁÈ/tests/integration/targets/ospf_remediate/tasks/_cleanup.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/_cleanup.yaml:2" name="[54.190.208.146] ospf: ospf_remediate : Clean persist operation output path=~/test_backup, state=absent" time="1.377791166305542">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;invocation&quot;: {
+        &quot;module_args&quot;: {
+            &quot;_diff_peek&quot;: null,
+            &quot;_original_basename&quot;: null,
+            &quot;access_time&quot;: null,
+            &quot;access_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;attributes&quot;: null,
+            &quot;follow&quot;: true,
+            &quot;force&quot;: false,
+            &quot;group&quot;: null,
+            &quot;mode&quot;: null,
+            &quot;modification_time&quot;: null,
+            &quot;modification_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;owner&quot;: null,
+            &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+            &quot;recurse&quot;: false,
+            &quot;selevel&quot;: null,
+            &quot;serole&quot;: null,
+            &quot;setype&quot;: null,
+            &quot;seuser&quot;: null,
+            &quot;src&quot;: null,
+            &quot;state&quot;: &quot;absent&quot;,
+            &quot;unsafe_writes&quot;: false
+        }
+    },
+    &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+    &quot;state&quot;: &quot;absent&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/main.yaml:11" name="[54.190.208.146] ospf: ospf_remediate : Set resources test_resources=['ospfv2', 'ospfv3', 'ospf_interfaces']" time="0.09160423278808594">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;test_resources&quot;: [
+            &quot;ospfv2&quot;,
+            &quot;ospfv3&quot;,
+            &quot;ospf_interfaces&quot;
+        ]
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/main.yaml:18" name="[54.190.208.146] ospf: ospf_remediate : Set data data_store test_data_store={'local': '~/test_backup'}" time="0.11230826377868652">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;test_data_store&quot;: {
+            &quot;local&quot;: &quot;~/test_backup&quot;
+        }
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/main.yaml:23" name="[54.190.208.146] ospf: Run network.ospf validated content with persist operation name=network.ospf.remediate" time="0.017928361892700195">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include_args&quot;: {
+        &quot;name&quot;: &quot;network.ospf.remediate&quot;
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[54.190.208.146] ospf: Invoke gather function name=network.base.resource_manager" time="0.025144100189208984">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include_args&quot;: {
+        &quot;name&quot;: &quot;network.base.resource_manager&quot;
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[54.190.208.146] ospf: network.base.resource_manager : Run the platform specific tasks _raw_params=./{{ operation }}.yaml" time="0.029504776000976562">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;All items completed&quot;,
+    &quot;results&quot;: [
+        {
+            &quot;ansible_loop_var&quot;: &quot;item&quot;,
+            &quot;include&quot;: &quot;./remediate.yaml&quot;,
+            &quot;include_args&quot;: {},
+            &quot;item&quot;: &quot;/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/remediate.yaml&quot;
+        }
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[include] ospf: network.base.resource_manager : Run the platform specific tasks _raw_params=./{{ operation }}.yaml" time="0.044814109802246094">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/./remediate.yaml (args={} vars={'item': '/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/remediate.yaml', '_ansible_item_label': '/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/remediate.yaml'}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:remediate.yaml:2" name="[54.190.208.146] ospf: network.base.resource_manager : Resolve inventory _raw_params=includes/inventory.yaml" time="0.011937141418457031">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;includes/inventory.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:remediate.yaml:2" name="[include] ospf: network.base.resource_manager : Resolve inventory _raw_params=includes/inventory.yaml" time="0.02532196044921875">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/includes/inventory.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:2" name="[54.190.208.146] ospf: network.base.resource_manager : Set default host vars path resource_manager_inventory_directory=." time="0.04757881164550781">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:7" name="[54.190.208.146] ospf: network.base.resource_manager : Set default host vars path resource_manager_inventory_directory={{ data_store['local'] }}" time="0.14266610145568848">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_inventory_directory&quot;: &quot;~/test_backup&quot;
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:12" name="[54.190.208.146] ospf: network.base.resource_manager : Set default path resource_manager_inventory_path={{ resource_manager_repository['path'] }}" time="0.020855426788330078">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:17" name="[54.190.208.146] ospf: network.base.resource_manager : Set default path resource_manager_inventory_path={{ resource_manager_inventory_directory }}" time="0.1272730827331543">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_inventory_path&quot;: &quot;~/test_backup&quot;
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:remediate.yaml:5" name="[54.190.208.146] ospf: network.base.resource_manager : Retrieve host vars and save locally _raw_params=includes/retrieve.yaml" time="0.026961326599121094">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:remediate.yaml:9" name="[54.190.208.146] ospf: network.base.resource_manager : Get list of SOT files paths={{ resource_manager_inventory_path }}/host_vars/{{ inventory_hostname }}, recurse=False, patterns=*.yaml, file_type=file" time="1.425023078918457">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;examined&quot;: 0,
+    &quot;files&quot;: [],
+    &quot;invocation&quot;: {
+        &quot;module_args&quot;: {
+            &quot;age&quot;: null,
+            &quot;age_stamp&quot;: &quot;mtime&quot;,
+            &quot;contains&quot;: null,
+            &quot;depth&quot;: null,
+            &quot;exact_mode&quot;: true,
+            &quot;excludes&quot;: null,
+            &quot;file_type&quot;: &quot;file&quot;,
+            &quot;follow&quot;: false,
+            &quot;get_checksum&quot;: false,
+            &quot;hidden&quot;: false,
+            &quot;mode&quot;: null,
+            &quot;paths&quot;: [
+                &quot;~/test_backup/host_vars/54.190.208.146&quot;
+            ],
+            &quot;patterns&quot;: [
+                &quot;*.yaml&quot;
+            ],
+            &quot;read_whole_file&quot;: false,
+            &quot;recurse&quot;: false,
+            &quot;size&quot;: null,
+            &quot;use_regex&quot;: false
+        }
+    },
+    &quot;matched&quot;: 0,
+    &quot;msg&quot;: &quot;Not all paths examined, check warnings for details&quot;,
+    &quot;skipped_paths&quot;: {
+        &quot;/home/ruchi/test_backup/host_vars/54.190.208.146&quot;: &quot;'/home/ruchi/test_backup/host_vars/54.190.208.146' is not a directory&quot;
+    },
+    &quot;warnings&quot;: [
+        &quot;Skipped '/home/ruchi/test_backup/host_vars/54.190.208.146' path due to this access issue: '/home/ruchi/test_backup/host_vars/54.190.208.146' is not a directory\n&quot;
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:remediate.yaml:17" name="[54.190.208.146] ospf: network.base.resource_manager : Set state as overridden to restore config resource_manager_state=overridden" time="0.1024622917175293">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_state&quot;: &quot;overridden&quot;
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:remediate.yaml:22" name="[54.190.208.146] ospf: network.base.resource_manager : Rectify drift _raw_params=includes/configure.yaml" time="0.008281946182250977">
+			<skipped>skipped</skipped>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/main.yaml:31" name="[54.190.208.146] ospf: ospf_remediate : Assert file generations _raw_params=includes/assertions.yaml" time="0.02567744255065918">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;All items completed&quot;,
+    &quot;results&quot;: [
+        {
+            &quot;ansible_loop_var&quot;: &quot;filename&quot;,
+            &quot;filename&quot;: &quot;ospfv2&quot;,
+            &quot;include&quot;: &quot;includes/assertions.yaml&quot;,
+            &quot;include_args&quot;: {}
+        },
+        {
+            &quot;ansible_loop_var&quot;: &quot;filename&quot;,
+            &quot;filename&quot;: &quot;ospfv3&quot;,
+            &quot;include&quot;: &quot;includes/assertions.yaml&quot;,
+            &quot;include_args&quot;: {}
+        },
+        {
+            &quot;ansible_loop_var&quot;: &quot;filename&quot;,
+            &quot;filename&quot;: &quot;ospf_interfaces&quot;,
+            &quot;include&quot;: &quot;includes/assertions.yaml&quot;,
+            &quot;include_args&quot;: {}
+        }
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/main.yaml:31" name="[include] ospf: ospf_remediate : Assert file generations _raw_params=includes/assertions.yaml" time="0.0531156063079834">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/ospf/tests/output/.tmp/integration/ospf_remediate-4z3lauhi-ÅÑŚÌβŁÈ/tests/integration/targets/ospf_remediate/includes/assertions.yaml (args={} vars={'filename': 'ospfv2', '_ansible_item_label': 'ospfv2'}): [54.190.208.146]
+/home/ruchi/workspace/collections/ansible_collections/network/ospf/tests/output/.tmp/integration/ospf_remediate-4z3lauhi-ÅÑŚÌβŁÈ/tests/integration/targets/ospf_remediate/includes/assertions.yaml (args={} vars={'filename': 'ospfv3', '_ansible_item_label': 'ospfv3'}): [54.190.208.146]
+/home/ruchi/workspace/collections/ansible_collections/network/ospf/tests/output/.tmp/integration/ospf_remediate-4z3lauhi-ÅÑŚÌβŁÈ/tests/integration/targets/ospf_remediate/includes/assertions.yaml (args={} vars={'filename': 'ospf_interfaces', '_ansible_item_label': 'ospf_interfaces'}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/includes/assertions.yaml:2" name="[54.190.208.146] ospf: ospf_remediate : Task name path={{ test_data_store['local'] }}/host_vars/{{ inventory_hostname }}/{{ filename }}.yaml" time="1.244722843170166">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;invocation&quot;: {
+        &quot;module_args&quot;: {
+            &quot;checksum_algorithm&quot;: &quot;sha1&quot;,
+            &quot;follow&quot;: false,
+            &quot;get_attributes&quot;: true,
+            &quot;get_checksum&quot;: true,
+            &quot;get_mime&quot;: true,
+            &quot;path&quot;: &quot;/home/ruchi/test_backup/host_vars/54.190.208.146/ospfv2.yaml&quot;
+        }
+    },
+    &quot;stat&quot;: {
+        &quot;exists&quot;: false
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/includes/assertions.yaml:7" name="[54.190.208.146] ospf: ospf_remediate : Assert that gather result that=['result.stat.exists == true']" time="0.08337140083312988">
+			<failure message="Assertion failed" type="failure">{
+    &quot;assertion&quot;: &quot;result.stat.exists == true&quot;,
+    &quot;changed&quot;: false,
+    &quot;evaluated_to&quot;: false,
+    &quot;msg&quot;: &quot;Assertion failed&quot;
+}</failure>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/main.yaml:52" name="[54.190.208.146] ospf: ospf_remediate : Reset configuration _raw_params=_cleanup.yaml" time="0.015462875366210938">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;_cleanup.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/main.yaml:52" name="[include] ospf: ospf_remediate : Reset configuration _raw_params=_cleanup.yaml" time="0.024884939193725586">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/ospf/tests/output/.tmp/integration/ospf_remediate-4z3lauhi-ÅÑŚÌβŁÈ/tests/integration/targets/ospf_remediate/tasks/_cleanup.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_remediate/tasks/_cleanup.yaml:2" name="[54.190.208.146] ospf: ospf_remediate : Clean persist operation output path=~/test_backup, state=absent" time="0.9699833393096924">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;invocation&quot;: {
+        &quot;module_args&quot;: {
+            &quot;_diff_peek&quot;: null,
+            &quot;_original_basename&quot;: null,
+            &quot;access_time&quot;: null,
+            &quot;access_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;attributes&quot;: null,
+            &quot;follow&quot;: true,
+            &quot;force&quot;: false,
+            &quot;group&quot;: null,
+            &quot;mode&quot;: null,
+            &quot;modification_time&quot;: null,
+            &quot;modification_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;owner&quot;: null,
+            &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+            &quot;recurse&quot;: false,
+            &quot;selevel&quot;: null,
+            &quot;serole&quot;: null,
+            &quot;setype&quot;: null,
+            &quot;seuser&quot;: null,
+            &quot;src&quot;: null,
+            &quot;state&quot;: &quot;absent&quot;,
+            &quot;unsafe_writes&quot;: false
+        }
+    },
+    &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+    &quot;state&quot;: &quot;absent&quot;
+}</system-out>
+		</testcase>
+	</testsuite>
+</testsuites>

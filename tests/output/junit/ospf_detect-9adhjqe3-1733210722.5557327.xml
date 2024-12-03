@@ -1,0 +1,583 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="47" time="10.7695648670196533203125">
+	<testsuite disabled="0" errors="0" failures="0" name="ospf_detect-9adhjqe3" skipped="10" tests="47" time="10.7695648670196533203125">
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:2" name="[54.190.208.146] ospf: ospf_detect : Debug msg=START network.ospf detect opeartion integration tests on connection={{ ansible_connection }}" time="0.0962381362915039">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;START network.ospf detect opeartion integration tests on connection=ansible.netcommon.network_cli&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:8" name="[54.190.208.146] ospf: ospf_detect : Reset configuration _raw_params=_cleanup.yaml" time="0.01796579360961914">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;_cleanup.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:8" name="[include] ospf: ospf_detect : Reset configuration _raw_params=_cleanup.yaml" time="0.02944493293762207">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/ospf/tests/output/.tmp/integration/ospf_detect-f07s9izs-ÅÑŚÌβŁÈ/tests/integration/targets/ospf_detect/tasks/_cleanup.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/_cleanup.yaml:2" name="[54.190.208.146] ospf: ospf_detect : Clean persist operation output path=~/test_backup, state=absent" time="1.4740633964538574">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;invocation&quot;: {
+        &quot;module_args&quot;: {
+            &quot;_diff_peek&quot;: null,
+            &quot;_original_basename&quot;: null,
+            &quot;access_time&quot;: null,
+            &quot;access_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;attributes&quot;: null,
+            &quot;follow&quot;: true,
+            &quot;force&quot;: false,
+            &quot;group&quot;: null,
+            &quot;mode&quot;: null,
+            &quot;modification_time&quot;: null,
+            &quot;modification_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;owner&quot;: null,
+            &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+            &quot;recurse&quot;: false,
+            &quot;selevel&quot;: null,
+            &quot;serole&quot;: null,
+            &quot;setype&quot;: null,
+            &quot;seuser&quot;: null,
+            &quot;src&quot;: null,
+            &quot;state&quot;: &quot;absent&quot;,
+            &quot;unsafe_writes&quot;: false
+        }
+    },
+    &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+    &quot;state&quot;: &quot;absent&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:11" name="[54.190.208.146] ospf: ospf_detect : Set resources test_resources=['ospfv2', 'ospfv3', 'ospf_interfaces']" time="0.10251641273498535">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;test_resources&quot;: [
+            &quot;ospfv2&quot;,
+            &quot;ospfv3&quot;,
+            &quot;ospf_interfaces&quot;
+        ]
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:18" name="[54.190.208.146] ospf: ospf_detect : Set data data_store test_data_store={'local': '~/test_backup'}" time="0.14264321327209473">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;test_data_store&quot;: {
+            &quot;local&quot;: &quot;~/test_backup&quot;
+        }
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:23" name="[54.190.208.146] ospf: Run network.ospf validated content persist operation name=network.ospf.detect" time="0.017567873001098633">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include_args&quot;: {
+        &quot;name&quot;: &quot;network.ospf.detect&quot;
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[54.190.208.146] ospf: Invoke detect function name=network.base.resource_manager" time="0.012735605239868164">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include_args&quot;: {
+        &quot;name&quot;: &quot;network.base.resource_manager&quot;
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[54.190.208.146] ospf: network.base.resource_manager : Run the platform specific tasks _raw_params=./{{ operation }}.yaml" time="0.03555870056152344">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;All items completed&quot;,
+    &quot;results&quot;: [
+        {
+            &quot;ansible_loop_var&quot;: &quot;item&quot;,
+            &quot;include&quot;: &quot;./detect.yaml&quot;,
+            &quot;include_args&quot;: {},
+            &quot;item&quot;: &quot;/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/detect.yaml&quot;
+        }
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[include] ospf: network.base.resource_manager : Run the platform specific tasks _raw_params=./{{ operation }}.yaml" time="0.061826467514038086">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/./detect.yaml (args={} vars={'item': '/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/detect.yaml', '_ansible_item_label': '/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/detect.yaml'}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:2" name="[54.190.208.146] ospf: network.base.resource_manager : Get the supported resource modules os_name={{ ansible_network_os }}" time="1.4382100105285645">
+			<system-out>{
+    &quot;ansible_connection&quot;: &quot;ansible.netcommon.network_cli&quot;,
+    &quot;ansible_network_os&quot;: &quot;cisco.nxos.nxos&quot;,
+    &quot;changed&quot;: false,
+    &quot;modules&quot;: [
+        &quot;acl_interfaces&quot;,
+        &quot;acls&quot;,
+        &quot;bfd_interfaces&quot;,
+        &quot;bgp_address_family&quot;,
+        &quot;bgp_global&quot;,
+        &quot;bgp_neighbor_address_family&quot;,
+        &quot;bgp_templates&quot;,
+        &quot;fc_interfaces&quot;,
+        &quot;hostname&quot;,
+        &quot;hsrp_interfaces&quot;,
+        &quot;interfaces&quot;,
+        &quot;l2_interfaces&quot;,
+        &quot;l3_interfaces&quot;,
+        &quot;lacp&quot;,
+        &quot;lacp_interfaces&quot;,
+        &quot;lag_interfaces&quot;,
+        &quot;lldp_global&quot;,
+        &quot;lldp_interfaces&quot;,
+        &quot;logging_global&quot;,
+        &quot;ntp_global&quot;,
+        &quot;ospf_interfaces&quot;,
+        &quot;ospfv2&quot;,
+        &quot;ospfv3&quot;,
+        &quot;prefix_lists&quot;,
+        &quot;route_maps&quot;,
+        &quot;snmp_server&quot;,
+        &quot;static_routes&quot;,
+        &quot;telemetry&quot;,
+        &quot;vlans&quot;,
+        &quot;vrf_global&quot;,
+        &quot;vrf_interfaces&quot;
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:7" name="[54.190.208.146] ospf: network.base.resource_manager : Set resources resource_manager_resources={{ resource_manager_network_resources_list['modules'] }}" time="0.07801055908203125">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_resources&quot;: [
+            &quot;acl_interfaces&quot;,
+            &quot;acls&quot;,
+            &quot;bfd_interfaces&quot;,
+            &quot;bgp_address_family&quot;,
+            &quot;bgp_global&quot;,
+            &quot;bgp_neighbor_address_family&quot;,
+            &quot;bgp_templates&quot;,
+            &quot;fc_interfaces&quot;,
+            &quot;hostname&quot;,
+            &quot;hsrp_interfaces&quot;,
+            &quot;interfaces&quot;,
+            &quot;l2_interfaces&quot;,
+            &quot;l3_interfaces&quot;,
+            &quot;lacp&quot;,
+            &quot;lacp_interfaces&quot;,
+            &quot;lag_interfaces&quot;,
+            &quot;lldp_global&quot;,
+            &quot;lldp_interfaces&quot;,
+            &quot;logging_global&quot;,
+            &quot;ntp_global&quot;,
+            &quot;ospf_interfaces&quot;,
+            &quot;ospfv2&quot;,
+            &quot;ospfv3&quot;,
+            &quot;prefix_lists&quot;,
+            &quot;route_maps&quot;,
+            &quot;snmp_server&quot;,
+            &quot;static_routes&quot;,
+            &quot;telemetry&quot;,
+            &quot;vlans&quot;,
+            &quot;vrf_global&quot;,
+            &quot;vrf_interfaces&quot;
+        ]
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:12" name="[54.190.208.146] ospf: network.base.resource_manager : Set Network resources resource_manager_network_resources={{ resource_manager_network_resources_list['modules'] | ansible.utils.param_list_compare(resource_manager_resources) }}" time="0.13032746315002441">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_network_resources&quot;: {
+            &quot;actionable&quot;: [
+                &quot;acl_interfaces&quot;,
+                &quot;acls&quot;,
+                &quot;bfd_interfaces&quot;,
+                &quot;bgp_address_family&quot;,
+                &quot;bgp_global&quot;,
+                &quot;bgp_neighbor_address_family&quot;,
+                &quot;bgp_templates&quot;,
+                &quot;fc_interfaces&quot;,
+                &quot;hostname&quot;,
+                &quot;hsrp_interfaces&quot;,
+                &quot;interfaces&quot;,
+                &quot;l2_interfaces&quot;,
+                &quot;l3_interfaces&quot;,
+                &quot;lacp&quot;,
+                &quot;lacp_interfaces&quot;,
+                &quot;lag_interfaces&quot;,
+                &quot;lldp_global&quot;,
+                &quot;lldp_interfaces&quot;,
+                &quot;logging_global&quot;,
+                &quot;ntp_global&quot;,
+                &quot;ospf_interfaces&quot;,
+                &quot;ospfv2&quot;,
+                &quot;ospfv3&quot;,
+                &quot;prefix_lists&quot;,
+                &quot;route_maps&quot;,
+                &quot;snmp_server&quot;,
+                &quot;static_routes&quot;,
+                &quot;telemetry&quot;,
+                &quot;vlans&quot;,
+                &quot;vrf_global&quot;,
+                &quot;vrf_interfaces&quot;
+            ],
+            &quot;unsupported&quot;: []
+        }
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:16" name="[54.190.208.146] ospf: network.base.resource_manager : Resolve inventory _raw_params=includes/inventory.yaml" time="0.009674310684204102">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;includes/inventory.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:16" name="[include] ospf: network.base.resource_manager : Resolve inventory _raw_params=includes/inventory.yaml" time="0.028847932815551758">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/includes/inventory.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:2" name="[54.190.208.146] ospf: network.base.resource_manager : Set default host vars path resource_manager_inventory_directory=." time="0.03050088882446289">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:7" name="[54.190.208.146] ospf: network.base.resource_manager : Set default host vars path resource_manager_inventory_directory={{ data_store['local'] }}" time="0.11661005020141602">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_inventory_directory&quot;: &quot;~/test_backup&quot;
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:12" name="[54.190.208.146] ospf: network.base.resource_manager : Set default path resource_manager_inventory_path={{ resource_manager_repository['path'] }}" time="0.04156374931335449">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:17" name="[54.190.208.146] ospf: network.base.resource_manager : Set default path resource_manager_inventory_path={{ resource_manager_inventory_directory }}" time="0.12335324287414551">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_inventory_path&quot;: &quot;~/test_backup&quot;
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:19" name="[54.190.208.146] ospf: network.base.resource_manager : Retrieve a repository from a distant location and make it available locally _raw_params=includes/retrieve.yaml" time="0.028452396392822266">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:23" name="[54.190.208.146] ospf: network.base.resource_manager : Get list of SOT files paths={{ resource_manager_inventory_path }}/host_vars/{{ inventory_hostname }}, recurse=False, patterns=*.yaml, file_type=file" time="1.4678020477294922">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;examined&quot;: 0,
+    &quot;files&quot;: [],
+    &quot;invocation&quot;: {
+        &quot;module_args&quot;: {
+            &quot;age&quot;: null,
+            &quot;age_stamp&quot;: &quot;mtime&quot;,
+            &quot;contains&quot;: null,
+            &quot;depth&quot;: null,
+            &quot;exact_mode&quot;: true,
+            &quot;excludes&quot;: null,
+            &quot;file_type&quot;: &quot;file&quot;,
+            &quot;follow&quot;: false,
+            &quot;get_checksum&quot;: false,
+            &quot;hidden&quot;: false,
+            &quot;mode&quot;: null,
+            &quot;paths&quot;: [
+                &quot;~/test_backup/host_vars/54.190.208.146&quot;
+            ],
+            &quot;patterns&quot;: [
+                &quot;*.yaml&quot;
+            ],
+            &quot;read_whole_file&quot;: false,
+            &quot;recurse&quot;: false,
+            &quot;size&quot;: null,
+            &quot;use_regex&quot;: false
+        }
+    },
+    &quot;matched&quot;: 0,
+    &quot;msg&quot;: &quot;Not all paths examined, check warnings for details&quot;,
+    &quot;skipped_paths&quot;: {
+        &quot;/home/ruchi/test_backup/host_vars/54.190.208.146&quot;: &quot;'/home/ruchi/test_backup/host_vars/54.190.208.146' is not a directory&quot;
+    },
+    &quot;warnings&quot;: [
+        &quot;Skipped '/home/ruchi/test_backup/host_vars/54.190.208.146' path due to this access issue: '/home/ruchi/test_backup/host_vars/54.190.208.146' is not a directory\n&quot;
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:31" name="[54.190.208.146] ospf: network.base.resource_manager : Set default state as 'overridden' resource_manager_state=overridden" time="0.09749984741210938">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_state&quot;: &quot;overridden&quot;
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:36" name="[54.190.208.146] ospf: network.base.resource_manager : Include check_drift task _raw_params=includes/check_drift.yaml" time="0.016710996627807617">
+			<skipped>skipped</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:45" name="[54.190.208.146] ospf: network.base.resource_manager : Detect drift msg=There is no configuration drift found" time="0.12309098243713379">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;There is no configuration drift found&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:31" name="[54.190.208.146] ospf: Run network.ospf validated content with detect operation name=network.ospf.detect" time="0.02231311798095703">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include_args&quot;: {
+        &quot;name&quot;: &quot;network.ospf.detect&quot;
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[54.190.208.146] ospf: Invoke detect function name=network.base.resource_manager" time="0.019501447677612305">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include_args&quot;: {
+        &quot;name&quot;: &quot;network.base.resource_manager&quot;
+    }
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[54.190.208.146] ospf: network.base.resource_manager : Run the platform specific tasks _raw_params=./{{ operation }}.yaml" time="0.032788753509521484">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;All items completed&quot;,
+    &quot;results&quot;: [
+        {
+            &quot;ansible_loop_var&quot;: &quot;item&quot;,
+            &quot;include&quot;: &quot;./detect.yaml&quot;,
+            &quot;include_args&quot;: {},
+            &quot;item&quot;: &quot;/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/detect.yaml&quot;
+        }
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:main.yaml:2" name="[include] ospf: network.base.resource_manager : Run the platform specific tasks _raw_params=./{{ operation }}.yaml" time="0.06528306007385254">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/./detect.yaml (args={} vars={'item': '/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/detect.yaml', '_ansible_item_label': '/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/tasks/detect.yaml'}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:2" name="[54.190.208.146] ospf: network.base.resource_manager : Get the supported resource modules os_name={{ ansible_network_os }}" time="1.5965774059295654">
+			<system-out>{
+    &quot;ansible_connection&quot;: &quot;ansible.netcommon.network_cli&quot;,
+    &quot;ansible_network_os&quot;: &quot;cisco.nxos.nxos&quot;,
+    &quot;changed&quot;: false,
+    &quot;modules&quot;: [
+        &quot;acl_interfaces&quot;,
+        &quot;acls&quot;,
+        &quot;bfd_interfaces&quot;,
+        &quot;bgp_address_family&quot;,
+        &quot;bgp_global&quot;,
+        &quot;bgp_neighbor_address_family&quot;,
+        &quot;bgp_templates&quot;,
+        &quot;fc_interfaces&quot;,
+        &quot;hostname&quot;,
+        &quot;hsrp_interfaces&quot;,
+        &quot;interfaces&quot;,
+        &quot;l2_interfaces&quot;,
+        &quot;l3_interfaces&quot;,
+        &quot;lacp&quot;,
+        &quot;lacp_interfaces&quot;,
+        &quot;lag_interfaces&quot;,
+        &quot;lldp_global&quot;,
+        &quot;lldp_interfaces&quot;,
+        &quot;logging_global&quot;,
+        &quot;ntp_global&quot;,
+        &quot;ospf_interfaces&quot;,
+        &quot;ospfv2&quot;,
+        &quot;ospfv3&quot;,
+        &quot;prefix_lists&quot;,
+        &quot;route_maps&quot;,
+        &quot;snmp_server&quot;,
+        &quot;static_routes&quot;,
+        &quot;telemetry&quot;,
+        &quot;vlans&quot;,
+        &quot;vrf_global&quot;,
+        &quot;vrf_interfaces&quot;
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:7" name="[54.190.208.146] ospf: network.base.resource_manager : Set resources resource_manager_resources={{ resource_manager_network_resources_list['modules'] }}" time="0.020818233489990234">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:12" name="[54.190.208.146] ospf: network.base.resource_manager : Set Network resources resource_manager_network_resources={{ resource_manager_network_resources_list['modules'] | ansible.utils.param_list_compare(resource_manager_resources) }}" time="0.1808171272277832">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_network_resources&quot;: {
+            &quot;actionable&quot;: [
+                &quot;acl_interfaces&quot;,
+                &quot;acls&quot;,
+                &quot;bfd_interfaces&quot;,
+                &quot;bgp_address_family&quot;,
+                &quot;bgp_global&quot;,
+                &quot;bgp_neighbor_address_family&quot;,
+                &quot;bgp_templates&quot;,
+                &quot;fc_interfaces&quot;,
+                &quot;hostname&quot;,
+                &quot;hsrp_interfaces&quot;,
+                &quot;interfaces&quot;,
+                &quot;l2_interfaces&quot;,
+                &quot;l3_interfaces&quot;,
+                &quot;lacp&quot;,
+                &quot;lacp_interfaces&quot;,
+                &quot;lag_interfaces&quot;,
+                &quot;lldp_global&quot;,
+                &quot;lldp_interfaces&quot;,
+                &quot;logging_global&quot;,
+                &quot;ntp_global&quot;,
+                &quot;ospf_interfaces&quot;,
+                &quot;ospfv2&quot;,
+                &quot;ospfv3&quot;,
+                &quot;prefix_lists&quot;,
+                &quot;route_maps&quot;,
+                &quot;snmp_server&quot;,
+                &quot;static_routes&quot;,
+                &quot;telemetry&quot;,
+                &quot;vlans&quot;,
+                &quot;vrf_global&quot;,
+                &quot;vrf_interfaces&quot;
+            ],
+            &quot;unsupported&quot;: []
+        }
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:16" name="[54.190.208.146] ospf: network.base.resource_manager : Resolve inventory _raw_params=includes/inventory.yaml" time="0.007944583892822266">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;includes/inventory.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:16" name="[include] ospf: network.base.resource_manager : Resolve inventory _raw_params=includes/inventory.yaml" time="0.015082597732543945">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/base/roles/resource_manager/includes/inventory.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:2" name="[54.190.208.146] ospf: network.base.resource_manager : Set default host vars path resource_manager_inventory_directory=." time="0.05130887031555176">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:7" name="[54.190.208.146] ospf: network.base.resource_manager : Set default host vars path resource_manager_inventory_directory={{ data_store['local'] }}" time="0.11162137985229492">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_inventory_directory&quot;: &quot;~/test_backup&quot;
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:12" name="[54.190.208.146] ospf: network.base.resource_manager : Set default path resource_manager_inventory_path={{ resource_manager_repository['path'] }}" time="0.03619813919067383">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:inventory.yaml:17" name="[54.190.208.146] ospf: network.base.resource_manager : Set default path resource_manager_inventory_path={{ resource_manager_inventory_directory }}" time="0.11168861389160156">
+			<system-out>{
+    &quot;ansible_facts&quot;: {
+        &quot;resource_manager_inventory_path&quot;: &quot;~/test_backup&quot;
+    },
+    &quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:19" name="[54.190.208.146] ospf: network.base.resource_manager : Retrieve a repository from a distant location and make it available locally _raw_params=includes/retrieve.yaml" time="0.023745298385620117">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:23" name="[54.190.208.146] ospf: network.base.resource_manager : Get list of SOT files paths={{ resource_manager_inventory_path }}/host_vars/{{ inventory_hostname }}, recurse=False, patterns=*.yaml, file_type=file" time="1.1546711921691895">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;examined&quot;: 0,
+    &quot;files&quot;: [],
+    &quot;invocation&quot;: {
+        &quot;module_args&quot;: {
+            &quot;age&quot;: null,
+            &quot;age_stamp&quot;: &quot;mtime&quot;,
+            &quot;contains&quot;: null,
+            &quot;depth&quot;: null,
+            &quot;exact_mode&quot;: true,
+            &quot;excludes&quot;: null,
+            &quot;file_type&quot;: &quot;file&quot;,
+            &quot;follow&quot;: false,
+            &quot;get_checksum&quot;: false,
+            &quot;hidden&quot;: false,
+            &quot;mode&quot;: null,
+            &quot;paths&quot;: [
+                &quot;~/test_backup/host_vars/54.190.208.146&quot;
+            ],
+            &quot;patterns&quot;: [
+                &quot;*.yaml&quot;
+            ],
+            &quot;read_whole_file&quot;: false,
+            &quot;recurse&quot;: false,
+            &quot;size&quot;: null,
+            &quot;use_regex&quot;: false
+        }
+    },
+    &quot;matched&quot;: 0,
+    &quot;msg&quot;: &quot;Not all paths examined, check warnings for details&quot;,
+    &quot;skipped_paths&quot;: {
+        &quot;/home/ruchi/test_backup/host_vars/54.190.208.146&quot;: &quot;'/home/ruchi/test_backup/host_vars/54.190.208.146' is not a directory&quot;
+    },
+    &quot;warnings&quot;: [
+        &quot;Skipped '/home/ruchi/test_backup/host_vars/54.190.208.146' path due to this access issue: '/home/ruchi/test_backup/host_vars/54.190.208.146' is not a directory\n&quot;
+    ]
+}</system-out>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:31" name="[54.190.208.146] ospf: network.base.resource_manager : Set default state as 'overridden' resource_manager_state=overridden" time="0.023633718490600586">
+			<skipped>Conditional result was False</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:36" name="[54.190.208.146] ospf: network.base.resource_manager : Include check_drift task _raw_params=includes/check_drift.yaml" time="0.015281915664672852">
+			<skipped>skipped</skipped>
+		</testcase>
+		<testcase classname="out-of-tree:detect.yaml:45" name="[54.190.208.146] ospf: network.base.resource_manager : Detect drift msg=There is no configuration drift found" time="0.09522771835327148">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;There is no configuration drift found&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:40" name="[54.190.208.146] ospf: ospf_detect : Assert that gresult that=['ospf_result.changed == false']" time="0.07668828964233398">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;All assertions passed&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:46" name="[54.190.208.146] ospf: ospf_detect : Reset configuration _raw_params=_cleanup.yaml" time="0.009643077850341797">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;include&quot;: &quot;_cleanup.yaml&quot;,
+    &quot;include_args&quot;: {}
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:46" name="[include] ospf: ospf_detect : Reset configuration _raw_params=_cleanup.yaml" time="0.016767024993896484">
+			<system-out>/home/ruchi/workspace/collections/ansible_collections/network/ospf/tests/output/.tmp/integration/ospf_detect-f07s9izs-ÅÑŚÌβŁÈ/tests/integration/targets/ospf_detect/tasks/_cleanup.yaml (args={} vars={}): [54.190.208.146]</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/_cleanup.yaml:2" name="[54.190.208.146] ospf: ospf_detect : Clean persist operation output path=~/test_backup, state=absent" time="1.2812278270721436">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;invocation&quot;: {
+        &quot;module_args&quot;: {
+            &quot;_diff_peek&quot;: null,
+            &quot;_original_basename&quot;: null,
+            &quot;access_time&quot;: null,
+            &quot;access_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;attributes&quot;: null,
+            &quot;follow&quot;: true,
+            &quot;force&quot;: false,
+            &quot;group&quot;: null,
+            &quot;mode&quot;: null,
+            &quot;modification_time&quot;: null,
+            &quot;modification_time_format&quot;: &quot;%Y%m%d%H%M.%S&quot;,
+            &quot;owner&quot;: null,
+            &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+            &quot;recurse&quot;: false,
+            &quot;selevel&quot;: null,
+            &quot;serole&quot;: null,
+            &quot;setype&quot;: null,
+            &quot;seuser&quot;: null,
+            &quot;src&quot;: null,
+            &quot;state&quot;: &quot;absent&quot;,
+            &quot;unsafe_writes&quot;: false
+        }
+    },
+    &quot;path&quot;: &quot;/home/ruchi/test_backup&quot;,
+    &quot;state&quot;: &quot;absent&quot;
+}</system-out>
+		</testcase>
+		<testcase classname="tests/integration/targets/ospf_detect/tasks/main.yaml:49" name="[54.190.208.146] ospf: ospf_detect : Debug msg=END network.ospf detect operation integration tests on connection={{ ansible_connection }}" time="0.07952046394348145">
+			<system-out>{
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;END network.ospf detect operation integration tests on connection=ansible.netcommon.network_cli&quot;
+}</system-out>
+		</testcase>
+	</testsuite>
+</testsuites>

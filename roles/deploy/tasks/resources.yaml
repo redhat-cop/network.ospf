@@ -1,0 +1,7 @@
+---
+- name: Set resources
+  ansible.builtin.set_fact:
+    ospf_resources:
+      - 'ospfv2'
+      - 'ospfv3'
+      - 'ospf_interfaces'

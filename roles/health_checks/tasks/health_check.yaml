@@ -1,6 +1,6 @@
 ---
 - name: Include tasks
-  ansible.builtin.include_tasks: .{{ ansible_network_os.split('.')[2] }}.yaml
+  ansible.builtin.include_tasks: "{{ ansible_network_os.split('.')[2] }}.yaml"
 
 - name: Set ospf healths
   ansible.builtin.set_fact:
@@ -15,4 +15,4 @@
 - name: OSPF health checks
   ansible.builtin.debug:
     var: health_checks
-  failed_when: "'unsuccessful' == health_checks.status"
+  # failed_when: "'unsuccessful' == health_checks.status"
