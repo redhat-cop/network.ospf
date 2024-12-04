@@ -1,5 +1,8 @@
 ---
 - name: Include tasks
+  ansible.builtin.include_tasks: validation.yaml
+
+- name: Include tasks
   ansible.builtin.include_tasks: "{{ operation.name }}.yaml"
   loop: "{{ operations }}"
   loop_control:
