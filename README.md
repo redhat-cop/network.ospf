@@ -17,7 +17,9 @@ This collection includes the following roles:
 - **`detect`**: Identify configuration drifts between desired and actual states.
 - **`remediate`**: Automatically correct configuration drifts and restore compliance.
 - **`gather`**: Collect facts and running configurations from network devices.
-- **`persist`**: Save network device configurations and facts to local or remote repositories for backup or audit purposes.
+- **`persist`**: Save network device configurations and facts to local or remote repositories for backup or audit
+purposes.
+- **`health_checks`**: Enables to perform health checks for OSPF neighborship.
 
 ## Included content
 
@@ -32,6 +34,7 @@ Name | Description
 [network.ospf.remediate](roles/remediate/README.md) | Correct configuration drifts and restore compliance.
 [network.ospf.gather](roles/gather/README.md) | Collect facts and running configurations from network devices.
 [network.ospf.persist](roles/persist/README.md) | Save configurations and facts to local or remote repositories.
+[network.ospf.health_checks](roles/health_checks/README.md) | Perform health checks for the OSPF neighborship.
 <!--end collection content-->
 
 ## Requirements

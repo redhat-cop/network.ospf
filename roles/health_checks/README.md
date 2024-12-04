@@ -14,6 +14,15 @@ The role enables user to manage the OSPF resources independent of platforms and 
 
 This role enables users to create a runtime brownfield inventory with all the OSPF configurations in terms of host vars. These host vars are ansible facts that have been gathered through the *ospfv2, *opfv3 and *ospf_interfaces network resource module. The tasks offered by this role can be observed below:
 
+## Variables
+
+| Variable Name        | Default Value | Required | Type | Description                                                   | Example |
+|:---------------------|:-------------:|:--------:|:----:|:-------------------------------------------------------------|:-------:|
+| `ansible_network_os` | `""`          | no      | str  | Network OS to be used during detection.                      | `"cisco.nxos.nxos"` |
+| `resources`          | `['ospfv2', 'ospfv3', 'ospf_interfaces']`       | no       | list | List of resources to check for configuration drift.           | `['ospf_interfaces', 'ospfv2', 'ospfv3]` |
+| `data_store`         | `""`          | yes      | dict | Specifies the data store to be used (local or SCM).           | See examples below. |
+| `operations`         | `[]`          | yes      | list | List of operations to perform during the health checks.        | See examples below. |
+
 ### Perform OSPF Health Checks
 - Health Checks operation fetches the current status of OSPF Neighborship health.
 - This can also include details about the OSPF metrics(state, peer, priority, etc).

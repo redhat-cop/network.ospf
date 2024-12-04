@@ -13,7 +13,7 @@ The `deploy` role will read the OSPF facts from the provided/default or remote i
 | Variable Name        | Default Value | Required | Type | Description                                                   | Example |
 |:---------------------|:-------------:|:--------:|:----:|:-------------------------------------------------------------|:-------:|
 | `ansible_network_os` | `""`          | no      | str  | Network OS to be used during deploy.                    | `"cisco.nxos.nxos"` |
-| `resources`          | `[all]`          | no      | list | List of resources to be deployed (e.g., ospfv2, ospfv3).   | `['interfaces', 'vlans']` |
+| `resources`          | `['ospfv2', 'ospfv3', 'ospf_interfaces']`          | no      | list | List of resources to be deployed (e.g., ospfv2, ospfv3).   | `['ospf_interfaces', 'ospfv2', 'ospfv3]` |
 | `data_store`         | `""`          | yes      | dict | Defines the source of the configurations (local or remote).   | See usage example below. |
 
 

@@ -13,7 +13,7 @@ The `persist` role enables users to fetch facts for specified network resources 
 | Variable Name        | Default Value | Required | Type | Description                                                   | Example |
 |:---------------------|:-------------:|:--------:|:----:|:-------------------------------------------------------------|:-------:|
 | `ansible_network_os` | `""`          | no      | str  | Network OS for which the facts are being gathered.            | `"cisco.nxos.nxos"` |
-| `resources`          | `[all]`       | no       | list | List of resources for which facts need to be persisted.       | `['ospf_interfaces', 'ospfv2', 'ospfv3]` |
+| `resources`          | `['ospfv2', 'ospfv3', 'ospf_interfaces']`       | no       | list | List of resources for which facts need to be persisted.       | `['ospf_interfaces', 'ospfv2', 'ospfv3]` |
 | `data_store`         | `""`          | yes      | dict | Specifies the storage configuration (local or SCM).           | See examples below. |
 
 ## Usage
