@@ -1,11 +1,8 @@
-# Network OSPF Role.
+# Health Checks
 
 The role enables user to manage the OSPF resources independent of platforms and perform OSPF health checks.
 
 ## Capabilities
-
-**OSPF Resource Management** :
-- Allows users to manage the OSPFv2, OSPFv3 and OSPF interface configurations. This also includes the enablement of gathering facts, updating OSPF resource host-vars and deploying config onto the network appliances.
 
 **OSPF Health Checks** :
 - Enables users to perform health checks for OSPF neighborship.This platform-agnostic role enables the user to perform OSPF health checks.

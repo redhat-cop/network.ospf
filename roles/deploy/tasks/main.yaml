@@ -1,10 +1,9 @@
 ---
-- name: Resolve target resources
-  ansible.builtin.include_tasks: resources.yaml
-
 - name: Invoke deploy function
   ansible.builtin.include_role:
-    name: network.base.resource_manager
+    name: network.base.deploy
   vars:
-    operation: 'deploy'
-    resources: "{{ ospf_resources }}"
+    resources:
+      - 'ospfv2'
+      - 'ospfv3'
+      - 'ospf_interfaces'

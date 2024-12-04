@@ -8,14 +8,36 @@ This repository contains the `network.ospf` Ansible Collection.
 
 - Ansible Network OSPF Collection contains the role that provides a platform-agnostic way of
   managing OSPF protocol/resources. This collection provides the user the capabilities to gather,
-  deploy, remediate, configure and perform health checks for network OSPF resources. 
+  deploy, remediate, configure and perform health checks for network OSPF resources.
 
 - Network OSPF collection can be used by anyone who is looking to manage and maintain ospf protocol/resources. This includes system administrators and IT professionals.
 
+This collection includes the following roles:
+- **`deploy`**: Ensure consistent configuration deployment across network devices.
+- **`detect`**: Identify configuration drifts between desired and actual states.
+- **`remediate`**: Automatically correct configuration drifts and restore compliance.
+- **`gather`**: Collect facts and running configurations from network devices.
+- **`persist`**: Save network device configurations and facts to local or remote repositories for backup or audit purposes.
+
+## Included content
+
+Click on the name of a role to view its documentation:
+
+<!--start collection content-->
+### Roles
+Name | Description
+--- | ---
+[network.ospf.deploy](roles/deploy/README.md) | Deploy consistent network configurations.
+[network.ospf.detect](roles/detect/README.md) | Identify configuration drifts and discrepancies.
+[network.ospf.remediate](roles/remediate/README.md) | Correct configuration drifts and restore compliance.
+[network.ospf.gather](roles/gather/README.md) | Collect facts and running configurations from network devices.
+[network.ospf.persist](roles/persist/README.md) | Save configurations and facts to local or remote repositories.
+<!--end collection content-->
+
 ## Requirements
-- [Requires Ansible](https://github.com/redhat-cop/network.ospf/blob/main/meta/runtime.yml)
-- [Requires Content Collections](https://github.com/redhat-cop/network.ospf/blob/main/galaxy.yml#L5https://forum.ansible.com/c/news/5/none)
-- [Testing Requirements](https://github.com/redhat-cop/network.ospf/blob/main/test-requirements.txt)
+- [Requires Ansible](https://github.com/ansible-network/network.ospf/blob/main/meta/runtime.yml)
+- [Requires Content Collections](https://github.com/ansible-network/network.ospf/blob/main/galaxy.yml#L5https://forum.ansible.com/c/news/5/none)
+- [Testing Requirements](https://github.com/ansible-network/network.ospf/blob/main/test-requirements.txt)
 - Users also need to include platform collections as per their requirements. The supported platform collections are:
   - [arista.eos](https://github.com/ansible-collections/arista.eos)
   - [cisco.ios](https://github.com/ansible-collections/cisco.ios)
@@ -47,20 +69,28 @@ ansible-galaxy collection install network.ospf
 
 ## Use Cases
 
+
 `Build Brownfield Inventory`:
-- This enables users to fetch the YAML structured resource module facts for OSPF resources OSPFv2, OSPFv3, OSPF interfaces and save it as host_vars to the local or remote data store which could be used as a single SOT for other operations.
-  
-`OSPF Resource Management`:
-- Users want to be able to manage the OSPFv2, OSPFv3 and OSPF interface configurations. This also includes the enablement of gathering facts, updating OSPF resource host-vars and deploying config onto the network appliances.
+- The `persist` role enables users to fetch the YAML structured resource module facts for OSPF resources OSPFv2, OSPFv3, OSPF interfaces and save it as host_vars to the local or remote data store which could be used as a single SOT for other operations.
 
-`OSPF Health Checks`:
-- Users want to be able to perform health checks for OSPF neighborship. These health checks should be able to provide the OSPF neighborship status with necessary details.
+`Configuration Deployment`:
+- The `deploy` role enables a user to read the host_vars from a local or remote data store and deploys if any changes are found.
 
-- This platform-agnostic role enables the user to perform OSPF health checks. Users can perform the following health checks:
-       `all_neigbors_up`
-       `all_neighbors_down`
-       `min_neighbors_up`
-       `ospf_summary_status`
+`Display Structured Configuration`:
+- The `gather` role enables users to be able to gather and display the structured facts for provided network resources.
+
+`Configuration Drift`:
+- The `detect` role will read the facts from the default/local or remote inventory host_vars and detect if any configuration changes are there between running and the provided config configuration.
+
+`Remediate Configuration`:
+- The `remediate` role will read the facts from the provided/default or remote inventory and remediate if there are any configuration changes on the appliances. This is done by overriding the running configuration with read facts from the provided inventory host vars.
+
+`Health Checks`:
+- The `health_checks` role enables users to perform health checks for OSPF neighborship. These health checks should be able to provide the OSPF neighborship status with necessary details.Users can perform the following health checks:
+  - `all_neigbors_up`
+  - `all_neighbors_down`
+  - `min_neighbors_up`
+  - `ospf_summary_status`
 - This role enables users to create a runtime brownfield inventory with all the OSPF configurations in terms of host vars. These host vars are ansible facts that have been gathered through the *ospfv2, *opfv3 and *ospf_interfaces network resource module. The tasks offered by this role can be observed below:
 
 ### Perform OSPF Health Checks
@@ -282,7 +312,7 @@ health_checks.yml
             user:
               name: "{{ ansible_github }}"
               email: "{{ your_email@example.com }}"
-      
+
 ## Testing
 
 The project uses tox to run `ansible-lint` and `ansible-test sanity`.
