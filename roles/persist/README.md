@@ -31,10 +31,6 @@ In this example, gathered facts are stored in a local directory:
         name: network.ospf.persist
       vars:
         ansible_network_os: cisco.nxos.nxos
-        resources:
-          - 'ospfv2'
-          - 'ospf_interfaces'
-          - 'ospfv3'
         data_store:
           local: "~/data/network"
 ```

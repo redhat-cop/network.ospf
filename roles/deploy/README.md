@@ -30,10 +30,6 @@ to the network.
       ansible.builtin.include_role:
         name: network.ospf.deploy
       vars:
-        resources:
-          - 'ospfv2'
-          - 'ospfv3'
-          - 'ospf_interfaces'
         data_store:
           scm:
             origin:

@@ -34,10 +34,6 @@ This example reads inventory host variables from a local directory and applies t
       ansible.builtin.include_role:
         name: network.ospf.remediate
       vars:
-        resources:
-          - 'ospfv2'
-          - 'ospfv3'
-          - 'ospf_interfaces'
         data_store:
           local: "~/data/network"
 ```
@@ -57,10 +53,6 @@ his example reads inventory host variables from a remote SCM repository and appl
       ansible.builtin.include_role:
         name: network.ospf.remediate
       vars:
-        resources:
-          - 'ospfv2'
-          - 'ospfv3'
-          - 'ospf_interfaces'
         data_store:
           scm:
             origin:

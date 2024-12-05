@@ -27,10 +27,7 @@ Below is an example playbook demonstrating how to use the `gather` role, where w
       ansible.builtin.include_role:
         name: network.ospf.gather
       vars:
-        resources:
-          - 'ospfv2'
-          - 'ospfv3'
-          - 'ospf_interfaces'
+        ansible_network_os: cisco.nxos.nxos
 ```
 Example Output
 When the playbook is executed successfully, the output will display the structured facts for the specified resources.

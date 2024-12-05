@@ -32,10 +32,6 @@ This example detects drifts by comparing the running configuration with data sto
       ansible.builtin.include_role:
         name: network.ospf.detect
       vars:
-        resources:
-          - 'ospfv2'
-          - 'ospfv3'
-          - 'ospf_interfaces'
         data_store:
           local: "~/data/network"
 ```
