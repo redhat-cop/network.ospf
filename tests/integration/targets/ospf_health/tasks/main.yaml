@@ -1,7 +1,7 @@
 ---
 - name: Debug
   ansible.builtin.debug:
-    msg: "START network.ospf health_check opeartion integration tests on connection={{ ansible_connection }}"
+    msg: "START network.ospf health_check role integration tests on connection={{ ansible_connection }}"
 
 - name: Perform health check on ospf protocol
   block:
@@ -23,4 +23,4 @@
 
 - name: Debug
   ansible.builtin.debug:
-    msg: "END network.ospf health_check opeartion integration tests on connection={{ ansible_connection }}"
+    msg: "END network.ospf health_check role integration tests on connection={{ ansible_connection }}"

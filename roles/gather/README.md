@@ -13,7 +13,6 @@ The `gather` role enables users to collect and display structured facts for prov
 | Variable Name        | Default Value | Required | Type | Description                                                   | Example |
 |:---------------------|:-------------:|:--------:|:----:|:-------------------------------------------------------------|:-------:|
 | `ansible_network_os` | `""`          | no      | str  | Network OS to be used during gather.                    | `"cisco.nxos.nxos"` |
-| `resources`          | `[all]`       | no       | list | List of resources for which facts need to be gathered.        | `['ospf_interfaces', 'ospfv2', 'ospfv3]` |
 
 ## Usage
 Below is an example playbook demonstrating how to use the `gather` role, where we will retrieve facts for the specified network resources:

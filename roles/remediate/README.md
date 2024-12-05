@@ -14,7 +14,6 @@ The `remediate` role enables users to fix configuration drifts by overriding the
 | Variable Name        | Default Value | Required | Type | Description                                                   | Example |
 |:---------------------|:-------------:|:--------:|:----:|:-------------------------------------------------------------|:-------:|
 | `ansible_network_os` | `""`          | no      | str  | Network OS to be used during remediation.                    | `"cisco.nxos.nxos"` |
-| `resources`          | `['ospfv2', 'ospfv3', 'ospf_interfaces']`       | no       | list | List of resources to remediate.                              | `['ospf_interfaces', 'ospfv2', 'ospfv3]` |
 | `data_store`         | `""`          | yes      | dict | Specifies the data store to be used (local or SCM).           | See examples below. |
 
 ## Usage

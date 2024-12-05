@@ -19,7 +19,6 @@ This role enables users to create a runtime brownfield inventory with all the OS
 | Variable Name        | Default Value | Required | Type | Description                                                   | Example |
 |:---------------------|:-------------:|:--------:|:----:|:-------------------------------------------------------------|:-------:|
 | `ansible_network_os` | `""`          | no      | str  | Network OS to be used during detection.                      | `"cisco.nxos.nxos"` |
-| `resources`          | `['ospfv2', 'ospfv3', 'ospf_interfaces']`       | no       | list | List of resources to check for configuration drift.           | `['ospf_interfaces', 'ospfv2', 'ospfv3]` |
 | `data_store`         | `""`          | yes      | dict | Specifies the data store to be used (local or SCM).           | See examples below. |
 | `operations`         | `[]`          | yes      | list | List of operations to perform during the health checks.        | See examples below. |
 
