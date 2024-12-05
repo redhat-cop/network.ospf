@@ -1,7 +1,7 @@
 ---
 - name: Debug
   ansible.builtin.debug:
-    msg: "START network.ospf persist opeartion integration tests on connection={{ ansible_connection }}"
+    msg: "START network.ospf persist role integration tests on connection={{ ansible_connection }}"
 
 - name: Cleanup, gather and persist
   block:
@@ -15,17 +15,15 @@
           - 'ospfv3'
           - 'ospf_interfaces'
 
-    - name: Set data data_store
+    - name: Set local data_store
       ansible.builtin.set_fact:
         test_data_store:
           local: "~/test_backup"
 
     - name: Run network.ospf validated content with persist operation
       ansible.builtin.include_role:
-        name: network.ospf.run
+        name: network.ospf.persist
       vars:
-        operations:
-          - name: persist
         data_store: "{{ test_data_store }}"
 
     - name: Assert file generations
@@ -34,19 +32,17 @@
       loop_control:
         loop_var: filename
 
-    - name: Run network.ospf validated content with persist operation
+    - name: Run network.ospf validated content with deploy operation
       ansible.builtin.include_role:
-        name: network.ospf.run
+        name: network.ospf.deploy
       vars:
-        operations:
-          - name: deploy
         data_store: "{{ test_data_store }}"
-      register: ospf_result
+      register: persist_result
 
     - name: Assert that result
       ansible.builtin.assert:
         that:
-          - ospf_result.changed == false
+          - persist_result.changed == false
 
   always:
     - name: Reset configuration
@@ -54,4 +50,4 @@
 
 - name: Debug
   ansible.builtin.debug:
-    msg: "END network.ospf persist opeartion integration tests on connection={{ ansible_connection }}"
+    msg: "END network.ospf persist role integration tests on connection={{ ansible_connection }}"

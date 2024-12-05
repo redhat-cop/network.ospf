@@ -1,26 +1,26 @@
 ---
 - name: Debug
   ansible.builtin.debug:
-    msg: "START network.ospf health_check opeartion integration tests on connection={{ ansible_connection }}"
+    msg: "START network.ospf health_check role integration tests on connection={{ ansible_connection }}"
 
 - name: Perform health check on ospf protocol
   block:
     - name: Run network.ospf validated content with health_checks operation
       ansible.builtin.include_role:
-        name: network.ospf.run
+        name: network.ospf.health_checks
       vars:
-        operations:
-          - name: health_check
-            vars:
-              details: true
-              checks:
-                - name: all_neighbors_up
-                - name: all_neighbors_down
-                  ignore_errors: true
-                - name: min_neighbors_up
-                  min_count: 1
+        ospf_health_check:
+          name: health_check
+          vars:
+            details: true
+            checks:
+              - name: all_neighbors_up
+              - name: all_neighbors_down
+                ignore_errors: true
+              - name: min_neighbors_up
+                min_count: 1
       register: ospf_result
 
 - name: Debug
   ansible.builtin.debug:
-    msg: "END network.ospf health_check opeartion integration tests on connection={{ ansible_connection }}"
+    msg: "END network.ospf health_check role integration tests on connection={{ ansible_connection }}"

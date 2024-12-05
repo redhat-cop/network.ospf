@@ -1,23 +1,26 @@
 ---
 - name: Debug
   ansible.builtin.debug:
-    msg: "START network.ospf gather opeartion integration tests on connection={{ ansible_connection }}"
+    msg: "START network.ospf gather role integration tests on connection={{ ansible_connection }}"
 
 - name: Gather and assertion
   block:
-    - name: Run network.ospf validated content with gather operation
+    - name: Run gather role to retrieve structured facts
       ansible.builtin.include_role:
-        name: network.ospf.run
+        name: network.ospf.gather
       vars:
-        operations:
-          - name: gather
-      register: ospf_result
+        resources:
+          - 'ospfv2'
+          - 'ospfv3'
+          - 'ospf_interfaces'
+      register: gather_result
 
     - name: Assert that gather result
       ansible.builtin.assert:
         that:
-          - ospf_result.changed == false
+          - gather_result is defined
+          - gather_result.changed == false
 
 - name: Debug
   ansible.builtin.debug:
-    msg: "END network.ospf gahter opeartion integration tests on connection={{ ansible_connection }}"
+    msg: "END network.ospf gather role integration tests on connection={{ ansible_connection }}"

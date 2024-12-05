@@ -8,14 +8,39 @@ This repository contains the `network.ospf` Ansible Collection.
 
 - Ansible Network OSPF Collection contains the role that provides a platform-agnostic way of
   managing OSPF protocol/resources. This collection provides the user the capabilities to gather,
-  deploy, remediate, configure and perform health checks for network OSPF resources. 
+  deploy, remediate, detect, persist and perform health checks for network OSPF resources.
 
 - Network OSPF collection can be used by anyone who is looking to manage and maintain ospf protocol/resources. This includes system administrators and IT professionals.
 
+This collection includes the following roles:
+- **`deploy`**: Ensure consistent configuration deployment across network devices.
+- **`detect`**: Identify configuration drifts between desired and actual states.
+- **`remediate`**: Automatically correct configuration drifts and restore compliance.
+- **`gather`**: Collect facts and running configurations from network devices.
+- **`persist`**: Save network device configurations and facts to local or remote repositories for backup or audit
+purposes.
+- **`health_checks`**: Enables to perform health checks for OSPF neighborship.
+
+## Included content
+
+Click on the name of a role to view its documentation:
+
+<!--start collection content-->
+### Roles
+Name | Description
+--- | ---
+[network.ospf.deploy](roles/deploy/README.md) | Deploy consistent network configurations.
+[network.ospf.detect](roles/detect/README.md) | Identify configuration drifts and discrepancies.
+[network.ospf.remediate](roles/remediate/README.md) | Correct configuration drifts and restore compliance.
+[network.ospf.gather](roles/gather/README.md) | Collect facts and running configurations from network devices.
+[network.ospf.persist](roles/persist/README.md) | Save configurations and facts to local or remote repositories.
+[network.ospf.health_checks](roles/health_checks/README.md) | Perform health checks for the OSPF neighborship.
+<!--end collection content-->
+
 ## Requirements
-- [Requires Ansible](https://github.com/redhat-cop/network.ospf/blob/main/meta/runtime.yml)
-- [Requires Content Collections](https://github.com/redhat-cop/network.ospf/blob/main/galaxy.yml#L5https://forum.ansible.com/c/news/5/none)
-- [Testing Requirements](https://github.com/redhat-cop/network.ospf/blob/main/test-requirements.txt)
+- [Requires Ansible](https://github.com/ansible-network/network.ospf/blob/main/meta/runtime.yml)
+- [Requires Content Collections](https://github.com/ansible-network/network.ospf/blob/main/galaxy.yml#L5https://forum.ansible.com/c/news/5/none)
+- [Testing Requirements](https://github.com/ansible-network/network.ospf/blob/main/test-requirements.txt)
 - Users also need to include platform collections as per their requirements. The supported platform collections are:
   - [arista.eos](https://github.com/ansible-collections/arista.eos)
   - [cisco.ios](https://github.com/ansible-collections/cisco.ios)
@@ -47,242 +72,30 @@ ansible-galaxy collection install network.ospf
 
 ## Use Cases
 
+
 `Build Brownfield Inventory`:
-- This enables users to fetch the YAML structured resource module facts for OSPF resources OSPFv2, OSPFv3, OSPF interfaces and save it as host_vars to the local or remote data store which could be used as a single SOT for other operations.
-  
-`OSPF Resource Management`:
-- Users want to be able to manage the OSPFv2, OSPFv3 and OSPF interface configurations. This also includes the enablement of gathering facts, updating OSPF resource host-vars and deploying config onto the network appliances.
+- The `persist` role enables users to fetch the YAML structured resource module facts for OSPF resources OSPFv2, OSPFv3, OSPF interfaces and save it as host_vars to the local or remote data store which could be used as a single SOT for other operations.
 
-`OSPF Health Checks`:
-- Users want to be able to perform health checks for OSPF neighborship. These health checks should be able to provide the OSPF neighborship status with necessary details.
+`Configuration Deployment`:
+- The `deploy` role enables a user to read the host_vars from a local or remote data store and deploys if any changes are found.
 
-- This platform-agnostic role enables the user to perform OSPF health checks. Users can perform the following health checks:
-       `all_neigbors_up`
-       `all_neighbors_down`
-       `min_neighbors_up`
-       `ospf_summary_status`
+`Display Structured Configuration`:
+- The `gather` role enables users to be able to gather and display the structured facts for provided network resources.
+
+`Configuration Drift`:
+- The `detect` role will read the facts from the default/local or remote inventory host_vars and detect if any configuration changes are there between running and the provided config configuration.
+
+`Remediate Configuration`:
+- The `remediate` role will read the facts from the provided/default or remote inventory and remediate if there are any configuration changes on the appliances. This is done by overriding the running configuration with read facts from the provided inventory host vars.
+
+`Health Checks`:
+- The `health_checks` role enables users to perform health checks for OSPF neighborship. These health checks should be able to provide the OSPF neighborship status with necessary details.Users can perform the following health checks:
+  - `all_neigbors_up`
+  - `all_neighbors_down`
+  - `min_neighbors_up`
+  - `ospf_summary_status`
 - This role enables users to create a runtime brownfield inventory with all the OSPF configurations in terms of host vars. These host vars are ansible facts that have been gathered through the *ospfv2, *opfv3 and *ospf_interfaces network resource module. The tasks offered by this role can be observed below:
 
-### Perform OSPF Health Checks
-- Health Checks operation fetches the current status of OSPF Neighborship health.
-- This can also include details about the OSPF metrics(state, peer, priority, etc).
-
-```yaml
-health_checks.yml
----
-- name: Perform OSPF health checks
-  hosts: ios
-  gather_facts: false
-  tasks:
-  - name: OSPF Manager
-    ansible.builtin.include_role:
-      name: network.ospf.run
-    vars:
-      ansible_network_os: cisco.ios.ios
-      operations:
-        - name: health_check
-          vars:
-            details: True
-            checks:
-              - name: all_neighbors_up
-              - name: all_neighbors_down
-              - name: min_neighbors_up
-                min_count: 1
-              - name: ospf_status_summary
-```
-
-
-### Building Brownfield Inventory with Persist
-- Persist operation fetches the ospfv2, ospfv3 and ospf_interfaces facts and stores them as host vars.
-- result of the successful `persist` operation would be an Inventory directory having facts as host vars acting as SOT
-  for operations like deploy, remediate, detect, etc.
-
-#### fetch OSF resource facts and build local data_store.
-```yaml
-- name: Persist the facts into host vars
-  hosts: rtr1
-  gather_facts: false
-  tasks:
-  - name: Network OSPF Manager
-    ansible.builtin.include_role:
-      name: network.ospf.run
-    vars:
-      ansible_network_os: cisco.ios.ios
-      operations:
-        - name: persist
-      data_store:
-        local: "~/backup/network"
-```
-
-#### gather OSPF resource facts and publish persisted host_vars inventory to the GitHub repository.
-```yaml
-- name: Persist the OSPF facts into remote data_store which is a github repository
-  hosts: rtr1
-  gather_facts: false
-  tasks:
-  - name: Network OSPF Manager
-    ansible.builtin.include_role:
-      name: network.ospf.run
-    vars:
-      ansible_network_os: cisco.ios.ios
-      operations:
-        - name: persist
-      persist_empty: false
-      data_store:
-        scm:
-          origin:
-            url: "{{ your_github_repo }}"
-            token: "{{ github_access_token }}"
-            user:
-              name: "{{ ansible_github }}"
-              email: "{{ your_email@example.com }}"
-```
-### Display Structured Data with Gather
-- Gather operation gathers the running configuration specific to ospfv2, ospfv3 and ospf_interfaces resources.
-
-```yaml
-- name: Display OSPF resources in structured format
-  hosts: ios
-  gather_facts: false
-  tasks:
-  - name: OSPF Manager
-    ansible.builtin.include_role:
-      name: network.ospf.run
-    vars:
-      ansible_network_os: cisco.ios.ios
-      operations:
-        - name: gather
-```
-
-#### Deploy OSPF Configuration
-- Deploy operation will read the OSPF facts from the provided/default or remote inventory and deploy the changes onto the appliances.
-
-#### read host_vars from local data_store and deploy onto the field.
-```yaml
-- name: Deploy changes
-  hosts: rtr1
-  gather_facts: false
-  tasks:
-  - name: Network OSPF Manager
-    ansible.builtin.include_role:
-      name: network.ospf.run
-    vars:
-      ansible_network_os: cisco.ios.ios
-      operations:
-        - name: deploy
-      data_store:
-        local: "~/backup/network"
-```
-
-#### retrieve host_cars from the GitHub repository and deploy changes onto the field.
-```yaml
-- name: retrieve config from github repo and deploy changes
-  hosts: rtr1
-  gather_facts: false
-  tasks:
-  - name: Network OSPF Manager
-    ansible.builtin.include_role:
-      name: network.ospf.run
-    vars:
-      ansible_network_os: cisco.ios.ios
-      operations:
-        - name: deploy
-      persist_empty: false
-      data_store:
-        scm:
-          origin:
-            url: "{{ your_github_repo }}"
-            token: "{{ github_access_token }}"
-            user:
-              name: "{{ ansible_github }}"
-              email: "{{ your_email@example.com }}"
-```
-
-#### Detect configuration drift in OSPF Configuration
-- Detect operation will read the facts from the local provided/default inventory and detect if any configuration diff exists w.r.t running-config.
-
-```yaml
-- name: Configuration drift detection
-  hosts: rtr1
-  gather_facts: false
-  tasks:
-  - name: Network OSPF Manager
-    ansible.builtin.include_role:
-      name: network.ospf.run
-    vars:
-      ansible_network_os: cisco.ios.ios
-      operations:
-        - name: detect
-      data_store:
-        local: "~/backup/network"
-```
-
-- Detect operation will read the facts from GitHub repository inventory and detect if any configuration diff exists w.r.t running-config.
-
-#### detect the config difference between host_vars in local data_store and running-config.
-```yaml
-- name: Configuration drift detection
-  hosts: rtr1
-  gather_facts: false
-  tasks:
-  - name: Network OSPF Manager
-    include_role:
-      name: network.ospf.run
-    vars:
-      ansible_network_os: cisco.ios.ios
-      operations:
-        - name: detect
-      data_store:
-        scm:
-          origin:
-            url: "{{ your_github_repo }}"
-            token: "{{ github_access_token }}"
-            user:
-              name: "{{ ansible_github }}"
-              email: "{{ your_email@example.com }}"
-```
-
-#### Remediate configuration drift in OSPF Configuration
-- `remediate` operation will read the facts from the locally provided/default inventory and remediate if any configuration changes are there on the appliances using the overridden state.
-
-```yaml
-- name: Remediate configuration
-  hosts: rtr1
-  gather_facts: false
-  tasks:
-  - name: Network OSPF Manager
-    include_role:
-      name: network.ospf.run
-    vars:
-      ansible_network_os: cisco.ios.ios
-      operations:
-        - name: remediate
-      data_store:
-        local: "~/backup/network"
-```
-- `remediate` operation will read the facts from the GitHub repository and remediate if any configuration changes are there on the appliances using the overridden state.
-
-```yaml
-- name: Remediate configuration
-  hosts: rtr1
-  gather_facts: false
-  tasks:
-  - name: Network OSPF Manager
-    include_role:
-      name: network.ospf.run
-    vars:
-      ansible_network_os: cisco.ios.ios
-      operations:
-        - name: remediate
-      data_store:
-        scm:
-          origin:
-            url: "{{ your_github_repo }}"
-            token: "{{ github_access_token }}"
-            user:
-              name: "{{ ansible_github }}"
-              email: "{{ your_email@example.com }}"
-      
 ## Testing
 
 The project uses tox to run `ansible-lint` and `ansible-test sanity`.

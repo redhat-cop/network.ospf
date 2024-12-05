@@ -1,10 +1,10 @@
 ---
 - name: Invoke gather function
   ansible.builtin.include_role:
-    name: network.base.resource_manager
+    name: network.base.persist
   vars:
-    operation: 'remediate'
     resources:
       - 'ospfv2'
       - 'ospfv3'
       - 'ospf_interfaces'
+    ignore_empty: "{{ persist_empty | default(true) }}"

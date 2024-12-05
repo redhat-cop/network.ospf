@@ -1,9 +1,9 @@
 ---
 - name: Debug
   ansible.builtin.debug:
-    msg: "START network.ospf detect opeartion integration tests on connection={{ ansible_connection }}"
+    msg: "START network.ospf detect role integration tests on connection={{ ansible_connection }}"
 
-- name: Cleanup, Read and Deploy
+- name: Cleanup, persist and detect drift
   block:
     - name: Reset configuration
       ansible.builtin.include_tasks: _cleanup.yaml
@@ -15,32 +15,28 @@
           - 'ospfv3'
           - 'ospf_interfaces'
 
-    - name: Set data data_store
+    - name: Set local data_store
       ansible.builtin.set_fact:
         test_data_store:
           local: "~/test_backup"
 
-    - name: Run network.ospf validated content persist operation
+    - name: Run persist role to gather and persist facts
       ansible.builtin.include_role:
-        name: network.ospf.run
+        name: network.ospf.persist
       vars:
-        operations:
-          - name: persist
         data_store: "{{ test_data_store }}"
 
-    - name: Run network.ospf validated content with detect operation
+    - name: Run detect role to identify configuration drift
       ansible.builtin.include_role:
-        name: network.ospf.run
+        name: network.ospf.detect
       vars:
-        operations:
-          - name: detect
         data_store: "{{ test_data_store }}"
-      register: ospf_result
+      register: detect_result
 
     - name: Assert that gresult
       ansible.builtin.assert:
         that:
-          - ospf_result.changed == false
+          - detect_result.changed == false
 
   always:
     - name: Reset configuration
@@ -48,4 +44,4 @@
 
 - name: Debug
   ansible.builtin.debug:
-    msg: "END network.ospf detect operation integration tests on connection={{ ansible_connection }}"
+    msg: "END network.ospf detect role integration tests on connection={{ ansible_connection }}"
