@@ -72,3 +72,5 @@ releases:
     - fix_ci.yaml
     - restructure.yaml
     release_date: '2025-01-17'
+  7.0.0:
+    release_date: '2025-08-19'
